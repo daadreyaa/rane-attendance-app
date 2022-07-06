@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rane_mobile_app/home_screen.dart';
-import 'package:rane_mobile_app/screens/attendance_screen.dart';
+import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen.dart';
+
+import 'screens/attendance_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,11 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: AttendanceScreen.id,
+      initialRoute: LeavePage.id,
       routes: {
         LoginPage.id: (context) => const LoginPage(),
         HomeScreen.id: (context) => const HomeScreen(),
         AttendanceScreen.id: (context) => const AttendanceScreen(),
+        LeavePage.id: (context) => const LeavePage(),
       },
     );
   }
