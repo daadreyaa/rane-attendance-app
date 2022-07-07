@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rane_mobile_app/home_screen.dart';
+import 'package:rane_mobile_app/screens/comp_page.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen.dart';
 
@@ -20,12 +21,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: LeavePage.id,
+      initialRoute: HomeScreen.id,
+      
       routes: {
         LoginPage.id: (context) => const LoginPage(),
         HomeScreen.id: (context) => const HomeScreen(),
         AttendanceScreen.id: (context) => const AttendanceScreen(),
         LeavePage.id: (context) => const LeavePage(),
+        CompPage.id:(context) => const CompPage(),
       },
     );
   }
