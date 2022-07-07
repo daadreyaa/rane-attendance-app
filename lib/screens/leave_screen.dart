@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:intl/intl.dart';
+import 'package:flutter_holo_date_picker/date_time_formatter.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:rane_mobile_app/components/constants.dart';
 import 'package:rane_mobile_app/components/rounded_button.dart';
@@ -14,15 +16,22 @@ class LeavePage extends StatefulWidget {
 
 class _LeavePageState extends State<LeavePage> {
   String dropdownvalue = 'Item 1';
+
+  DateTime now = DateTime.now();
+  late DateTime? startDate = now;
+  late DateTime? endDate = now.add(const Duration(days: 1));
+
+  DateFormat formatter = DateFormat('yyyy-MM-dd');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-            child: Text(
+        title: Text(
           "Leave/OD",
           style: kPrimaryText,
-        )),
+        ),
+        centerTitle: true,
       ),
       body: Container(
         child: Column(
@@ -58,17 +67,18 @@ class _LeavePageState extends State<LeavePage> {
                 children: [
                   Text("Start:", style: kPrimaryText),
                   ElevatedButton(
-                      child: const Text("date"),
+                      child: Text(formatter.format(startDate!)),
                       onPressed: () async {
-                        var datePicked = await DatePicker.showSimpleDatePicker(
+                        startDate = await DatePicker.showSimpleDatePicker(
                           context,
-                          initialDate: DateTime(1994),
-                          firstDate: DateTime(1960),
-                          lastDate: DateTime(2012),
+                          initialDate: startDate,
+                          firstDate: DateTime(now.year),
+                          lastDate: DateTime(now.year + 1),
                           dateFormat: "dd-MMMM-yyyy",
                           locale: DateTimePickerLocale.en_us,
-                          looping: true,
+                          // looping: true,
                         );
+                        if (startDate != null) setState(() {});
                       }),
                   ToggleSwitch(
                     minWidth: 90.0,
@@ -96,17 +106,18 @@ class _LeavePageState extends State<LeavePage> {
                 children: [
                   Text("End:", style: kPrimaryText),
                   ElevatedButton(
-                      child: const Text("date"),
+                      child: Text(formatter.format(endDate!)),
                       onPressed: () async {
-                        var datePicked = await DatePicker.showSimpleDatePicker(
+                        endDate = await DatePicker.showSimpleDatePicker(
                           context,
-                          initialDate: DateTime(1994),
-                          firstDate: DateTime(1960),
-                          lastDate: DateTime(2012),
+                          initialDate: endDate,
+                          firstDate: DateTime(now.year),
+                          lastDate: DateTime(now.year + 1),
                           dateFormat: "dd-MMMM-yyyy",
                           locale: DateTimePickerLocale.en_us,
-                          looping: true,
+                          // looping: true,
                         );
+                        if (endDate != null) setState(() {});
                       }),
                   ToggleSwitch(
                     minWidth: 90.0,
@@ -125,33 +136,44 @@ class _LeavePageState extends State<LeavePage> {
               ),
             ),
             const Divider(),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text("Leave Balance", style: kPrimaryText),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("CL:", style: kPrimaryText),
+                  const SizedBox(width: 20),
+                  Text("10", style: kPrimaryText),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("PL:", style: kPrimaryText),
+                  const SizedBox(width: 20),
+                  Text("10", style: kPrimaryText),
                 ],
               ),
             ),
             const SizedBox(
               height: 30,
             ),
-            RoundedButton(title: "Submit", color: Colors.blue, onPressed: null,borderRadius: 10,)
+            RoundedButton(
+              title: "Submit",
+              color: Colors.blue,
+              onPressed: null,
+              borderRadius: 10,
+            )
           ],
         ),
       ),

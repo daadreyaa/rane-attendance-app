@@ -29,6 +29,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
             textStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700),
           ),
         ),
+        centerTitle: true,
         backgroundColor: Colors.grey.shade800,
       ),
       body: Center(
@@ -70,7 +71,100 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               ),
             ),
             const SizedBox(
-              height: 20.0,
+              height: 40.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'In Time',
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20.0,
+                  child: Center(
+                    child: Text(':'),
+                  ),
+                ),
+                Text(
+                  '10:00 AM',
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Out Time',
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20.0,
+                  child: Center(
+                    child: Text(':'),
+                  ),
+                ),
+                Text(
+                  '5:00 PM',
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Shift',
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20.0,
+                  child: Center(
+                    child: Text(':'),
+                  ),
+                ),
+                Text(
+                  '1 (10:00 AM - 5:00PM)',
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

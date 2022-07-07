@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rane_mobile_app/screens/attendance_screen.dart';
+import 'package:rane_mobile_app/screens/forgot_punch.dart';
+import 'package:rane_mobile_app/screens/leave_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           'Welcome',
           style: GoogleFonts.lexendDeca(
-            textStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700),
+            textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
           ),
         ),
         backgroundColor: Colors.grey.shade800,
@@ -43,7 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SelectOption(
                   option: 'Attendance',
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, AttendanceScreen.id),
+
+                  // onTap: () => print('clicked'),
                 ),
               ],
             ),
@@ -52,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SelectOption(
                   option: 'Leave/OD',
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, LeavePage.id),
                 ),
                 SelectOption(
                   option: 'Shift Change',
@@ -62,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SelectOption(
               option: 'Forgot Punch',
-              onTap: () {},
+              onTap: () => Navigator.pushNamed(context, ForgotPunch.id),
               width: 250,
             ),
           ],
