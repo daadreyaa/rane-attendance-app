@@ -6,6 +6,8 @@ import 'package:rane_mobile_app/screens/forgot_punch.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/ovetime_screen.dart';
 
+import '../components/constants.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -19,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
           'Welcome',

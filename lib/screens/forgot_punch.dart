@@ -28,6 +28,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
           'Forgot Punch',
