@@ -18,6 +18,7 @@ class _CompPageState extends State<CompPage> {
     TextEditingController _controller3 = TextEditingController();
     TextEditingController _controller4 = TextEditingController();
     return Scaffold(
+       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
           'C-Off',

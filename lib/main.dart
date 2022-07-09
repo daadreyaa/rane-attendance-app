@@ -4,6 +4,7 @@ import 'package:rane_mobile_app/screens/home_screen.dart';
 import 'package:rane_mobile_app/screens/comp_page.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen.dart';
+import 'package:rane_mobile_app/screens/ovetime_screen.dart';
 
 import 'screens/attendance_screen.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         LeavePage.id: (context) => const LeavePage(),
         ForgotPunch.id: (context) => const ForgotPunch(),
         CompPage.id: (context) => const CompPage(),
+        OvertimeScreen.id: (context) => const OvertimeScreen(),
       },
     );
   }

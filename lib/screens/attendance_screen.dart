@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
 import 'package:horizontal_center_date_picker/horizontal_date_picker.dart';
 
+import '../components/constants.dart';
+
 class AttendanceScreen extends StatefulWidget {
   const AttendanceScreen({Key? key}) : super(key: key);
 
@@ -22,6 +24,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
           'Attendance',
@@ -35,6 +38,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
       body: Center(
         child: Column(
           children: [
+            const SizedBox(height: 10,),
             Container(
               color: Colors.grey,
               alignment: Alignment.center,
@@ -43,7 +47,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 startDate: startDate,
                 endDate: endDate,
                 selectedDate: now,
-                normalColor: Colors.yellow,
+                normalColor: Colors.white,
                 widgetWidth: MediaQuery.of(context).size.width,
                 datePickerController: _datePickerController,
                 onValueSelected: (date) {

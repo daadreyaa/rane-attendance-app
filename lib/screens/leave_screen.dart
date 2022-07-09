@@ -26,7 +26,9 @@ class _LeavePageState extends State<LeavePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
+        backgroundColor: kRoyaleBlue,
         title: Text(
           "Leave/OD",
           style: kPrimaryText,
@@ -37,7 +39,7 @@ class _LeavePageState extends State<LeavePage> {
         child: Column(
           children: [
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -45,8 +47,24 @@ class _LeavePageState extends State<LeavePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Type of leave: ", style: kPrimaryText),
-                  // Here, default theme colors are used for activeBgColor, activeFgColor, inactiveBgColor and inactiveFgColor
-                  ToggleSwitch(
+                  Container(
+              color: const Color(0xfff8f8f8),
+              alignment: Alignment.center,
+              transformAlignment: Alignment.center,
+              child: Container(
+                color: const Color(0xfff8f8f8),
+                child: Container(
+                child: ToggleSwitch(
+               
+                  dividerColor: kRoyaleBlue,
+                  activeBorders: [Border.all(color: kRoyaleBlue,width: 2)],
+                  borderColor: [kTertiaryColor],
+                  borderWidth: 0,
+                  activeBgColor: [Colors.white],
+                    activeFgColor: Colors.black,
+                    inactiveBgColor: kTertiaryColor,
+                    inactiveFgColor: Colors.blueGrey,
+                    
                     initialLabelIndex: 0,
                     totalSwitches: 3,
                     labels: const ['CL', 'PL', 'OD'],
@@ -54,6 +72,36 @@ class _LeavePageState extends State<LeavePage> {
                       print('switched to: $index');
                     },
                   ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xfff8f8f8),
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xfff8f8f8),
+                        Color(0xfff8f8f8),
+                      ],
+                    ),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 154, 154, 154),
+                        offset: Offset(10.0, 10.0),
+                        blurRadius: 20,
+                        spreadRadius: 0.0,
+                      ),
+                      BoxShadow(
+                        color: Color.fromARGB(255, 221, 221, 221),
+                        offset: Offset(-10.0, -10.0),
+                        blurRadius: 20,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+                  
                 ],
               ),
             ),
@@ -67,6 +115,7 @@ class _LeavePageState extends State<LeavePage> {
                 children: [
                   Text("Start:", style: kPrimaryText),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
                       child: Text(formatter.format(startDate!)),
                       onPressed: () async {
                         startDate = await DatePicker.showSimpleDatePicker(
@@ -80,19 +129,64 @@ class _LeavePageState extends State<LeavePage> {
                         );
                         if (startDate != null) setState(() {});
                       }),
-                  ToggleSwitch(
+                       Container(
+              color: const Color(0xfff8f8f8),
+              alignment: Alignment.center,
+              transformAlignment: Alignment.center,
+              child: Container(
+                color: const Color(0xfff8f8f8),
+                child: Container(
+                child: ToggleSwitch(
+                    dividerColor: kRoyaleBlue,
+                  activeBorders: [Border.all(color: kRoyaleBlue,width: 2)],
+                  borderColor: [kTertiaryColor],
+                  borderWidth: 0,
+                  activeBgColor: [Colors.white],
+                    activeFgColor: Colors.black,
+                    inactiveBgColor: kTertiaryColor,
+                    inactiveFgColor: Colors.blueGrey,
+                  
+                  
                     minWidth: 90.0,
                     initialLabelIndex: 1,
                     cornerRadius: 10.0,
-                    activeFgColor: Colors.white,
-                    inactiveBgColor: Colors.grey,
-                    inactiveFgColor: Colors.white,
+                   
                     totalSwitches: 2,
                     labels: const ['Half', 'Full'],
                     onToggle: (index) {
                       print('switched to: $index');
                     },
                   ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xfff8f8f8),
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xfff8f8f8),
+                        Color(0xfff8f8f8),
+                      ],
+                    ),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 154, 154, 154),
+                        offset: Offset(10.0, 10.0),
+                        blurRadius: 20,
+                        spreadRadius: 0.0,
+                      ),
+                      BoxShadow(
+                        color: Color.fromARGB(255, 221, 221, 221),
+                        offset: Offset(-10.0, -10.0),
+                        blurRadius: 20,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+                  
                 ],
               ),
             ),
@@ -104,8 +198,9 @@ class _LeavePageState extends State<LeavePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("End:", style: kPrimaryText),
+                  Text("End:  ", style: kPrimaryText),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
                       child: Text(formatter.format(endDate!)),
                       onPressed: () async {
                         endDate = await DatePicker.showSimpleDatePicker(
@@ -119,22 +214,68 @@ class _LeavePageState extends State<LeavePage> {
                         );
                         if (endDate != null) setState(() {});
                       }),
-                  ToggleSwitch(
+                      Container(
+              color: const Color(0xfff8f8f8),
+              alignment: Alignment.center,
+              transformAlignment: Alignment.center,
+              child: Container(
+                color: const Color(0xfff8f8f8),
+                child: Container(
+                child: ToggleSwitch(
+                    dividerColor: kRoyaleBlue,
+                  activeBorders: [Border.all(color: kRoyaleBlue,width: 2)],
+                  borderColor: [kTertiaryColor],
+                  borderWidth: 0,
+                  activeBgColor: [Colors.white],
+                    activeFgColor: Colors.black,
+                    inactiveBgColor: kTertiaryColor,
+                    inactiveFgColor: Colors.blueGrey,
+                  
+                  
                     minWidth: 90.0,
                     initialLabelIndex: 1,
                     cornerRadius: 10.0,
-                    activeFgColor: Colors.white,
-                    inactiveBgColor: Colors.grey,
-                    inactiveFgColor: Colors.white,
+                   
                     totalSwitches: 2,
                     labels: const ['Half', 'Full'],
                     onToggle: (index) {
                       print('switched to: $index');
                     },
                   ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xfff8f8f8),
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xfff8f8f8),
+                        Color(0xfff8f8f8),
+                      ],
+                    ),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 154, 154, 154),
+                        offset: Offset(10.0, 10.0),
+                        blurRadius: 20,
+                        spreadRadius: 0.0,
+                      ),
+                      BoxShadow(
+                        color: Color.fromARGB(255, 221, 221, 221),
+                        offset: Offset(-10.0, -10.0),
+                        blurRadius: 20,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+                  
                 ],
               ),
             ),
+            SizedBox(height: 10,),
             const Divider(),
             const SizedBox(
               height: 20,
@@ -143,25 +284,48 @@ class _LeavePageState extends State<LeavePage> {
             const SizedBox(
               height: 20,
             ),
+           
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.33,8,8,8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("CL:", style: kPrimaryText),
-                  const SizedBox(width: 20),
-                  Text("10", style: kPrimaryText),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("PL:", style: kPrimaryText),
-                  const SizedBox(width: 20),
-                  Text("10", style: kPrimaryText),
+                  Row(
+                    children: [
+                      Text("CL:", style: kPrimaryText),
+                      SizedBox(width: 70,),
+                      Text("10", style: kPrimaryText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text("PL:", style: kPrimaryText),
+                      SizedBox(width: 73,),
+                      Text("10", style: kPrimaryText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text("Total:", style: kPrimaryText),
+                      SizedBox(width: 50,),
+                      Text("10", style: kPrimaryText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text("Availed:", style: kPrimaryText),
+                      SizedBox(width: 27,),
+                      Text("10", style: kPrimaryText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text("Balance:", style: kPrimaryText),
+                      SizedBox(width: 20,),
+                      Text("10", style: kPrimaryText),
+                    ],
+                  ),
+                  
                 ],
               ),
             ),
@@ -170,10 +334,10 @@ class _LeavePageState extends State<LeavePage> {
             ),
             RoundedButton(
               title: "Submit",
-              color: Colors.blue,
+              color: kRoyaleBlue,
               onPressed: null,
               borderRadius: 10,
-            )
+            ),
           ],
         ),
       ),
