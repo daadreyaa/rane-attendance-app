@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: const Color(0xffe4e3e9),
       ),
-      backgroundColor: const Color(0xffe4e3e9),
+      
       body: Center(
         child: Column(
           children: [
