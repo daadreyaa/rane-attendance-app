@@ -39,5 +39,7 @@ const Color kPastelBlue = Color(0xff8CBBF1);
 const Color kDreamyBlue = Color(0xff92B2FD);
 
 TextStyle kPrimaryText = GoogleFonts.lexendDeca(fontSize: 20, fontWeight: FontWeight.w500);
-TextStyle kSecondaryText = GoogleFonts.lexendDeca(fontSize: 14, fontWeight: FontWeight.w400);
+TextStyle kSecondaryText = GoogleFonts.lexendDeca(fontSize: 16, fontWeight: FontWeight.w400);
 TextStyle kHeadingText = GoogleFonts.lexendDeca(fontSize: 18.0, fontWeight: FontWeight.w700,color: Colors.black);
+TextStyle kPrimaryWhiteText = GoogleFonts.lexendDeca( fontSize: 20, fontWeight: FontWeight.w500,color:Colors.white);
+TextStyle kSecondaryWhiteText = GoogleFonts.lexendDeca(fontSize: 16, fontWeight: FontWeight.w400,color:Colors.white);

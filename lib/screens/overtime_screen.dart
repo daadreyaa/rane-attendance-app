@@ -22,6 +22,7 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.black,
         title: Text(
           'Overtime',
           style: GoogleFonts.lexendDeca(
@@ -64,7 +65,7 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
                     textStyle: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
+                      
                     ),
                   ),
                 ),
