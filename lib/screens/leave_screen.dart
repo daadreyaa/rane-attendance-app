@@ -55,7 +55,9 @@ class _LeavePageState extends State<LeavePage> {
                 color: const Color(0xfff8f8f8),
                 child: Container(
                 child: ToggleSwitch(
-               
+              //  animate: true,
+              //  animationDuration: 500,
+              //  curve: Curves.decelerate,
                   dividerColor: kRoyaleBlue,
                   activeBorders: [Border.all(color: kRoyaleBlue,width: 2)],
                   borderColor: [kTertiaryColor],

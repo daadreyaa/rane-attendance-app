@@ -5,6 +5,7 @@ import 'package:rane_mobile_app/screens/attendance_screen.dart';
 import 'package:rane_mobile_app/screens/forgot_punch.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_screen.dart';
+import 'package:rane_mobile_app/screens/dashboard_screen.dart';
 
 import '../components/constants.dart';
 
@@ -93,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SelectOptionContainer(
                   title: 'Dashboard',
                   imageLocation: 'images/dashboard.png',
-                  onTap: () {},
+                  onTap: ()  => Navigator.pushNamed(context, DashBoardPage.id),
                 ),
                 SelectOptionContainer(
                   title: 'Attendance',
@@ -116,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SelectOptionContainer(
                   title: 'Shift Change',
                   imageLocation: 'images/change_shift.png',
-                  onTap: () {},
+                  onTap: (){},
                 ),
               ],
             ),
