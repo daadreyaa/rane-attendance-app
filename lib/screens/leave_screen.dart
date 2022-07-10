@@ -26,12 +26,14 @@ class _LeavePageState extends State<LeavePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        backgroundColor: kRoyaleBlue,
+        foregroundColor: Colors.black,
+        backgroundColor: kAppbarTextColor,
         title: Text(
           "Leave/OD",
-          style: kPrimaryText,
+          style: kHeadingText,
         ),
         centerTitle: true,
       ),

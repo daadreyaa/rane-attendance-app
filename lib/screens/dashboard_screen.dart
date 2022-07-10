@@ -17,8 +17,9 @@ class _DashBoardPageState extends State<DashBoardPage> {
     return Scaffold(
       backgroundColor: kAppbarTextColor,
       appBar: AppBar(
+        foregroundColor: Colors.black,
         backgroundColor: kBackgroundColor,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Text(
           'Hi, User',
           style: kHeadingText,
@@ -40,7 +41,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
             ),
           ),
         ],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 0,
       ),
       body: Padding(

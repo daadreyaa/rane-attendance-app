@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
-          'Welcome',
+          'Welcome, User',
           style: GoogleFonts.lexendDeca(
             textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700, color: Colors.black
             ),

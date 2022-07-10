@@ -17,6 +17,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.black,
         title: Text(
           'Overtime',
           style: GoogleFonts.lexendDeca(
@@ -146,7 +147,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
             ),
             RoundedButton(
               title: 'Apply',
-              color: Colors.lightBlueAccent,
+              color: kRoyaleBlue,
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
@@ -194,7 +195,7 @@ class ConfirmationModal extends StatelessWidget {
                   'Machine Name',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.lightBlueAccent,
+                    color: kRoyaleBlue,
                     fontSize: 20.0,
                     fontWeight: FontWeight.w400,
                   ),
@@ -225,7 +226,7 @@ class ConfirmationModal extends StatelessWidget {
                   'Description',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.lightBlueAccent,
+                    color: kRoyaleBlue,
                     fontSize: 20.0,
                     fontWeight: FontWeight.w400,
                   ),
@@ -263,7 +264,7 @@ class ConfirmationModal extends StatelessWidget {
                   ),
                 ),
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.lightBlueAccent,
+                  backgroundColor: kRoyaleBlue,
                 ),
                 onPressed: () {
                   if (machineName != '' && description != '') {
