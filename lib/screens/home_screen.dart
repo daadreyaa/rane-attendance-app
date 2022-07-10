@@ -26,10 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           'Welcome',
           style: GoogleFonts.lexendDeca(
-            textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700, color: Colors.black),
+            textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700, color: Colors.black
+            ),
           ),
         ),
-        backgroundColor: const Color(0xffe4e3e9),
+    backgroundColor: kAppbarTextColor,
       ),
       body: Center(
         child: Column(
@@ -43,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 180,
               child: const CircleAvatar(
                 backgroundImage: NetworkImage(
-                  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Rajalakshmi_Engineering_College_%28REC%29_Chennai_Logo.jpg/626px-Rajalakshmi_Engineering_College_%28REC%29_Chennai_Logo.jpg',
+                  'https://lenstax.com/auth/app-assets/images/profile/user-uploads/user-04.jpg',
                 ),
                 radius: 80,
               ),

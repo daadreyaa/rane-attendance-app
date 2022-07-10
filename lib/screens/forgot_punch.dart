@@ -28,16 +28,16 @@ class _ForgotPunchState extends State<ForgotPunch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
        backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
           'Forgot Punch',
-          style: GoogleFonts.lexendDeca(
-            textStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700),
-          ),
+          style: kHeadingText
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: kAppbarTextColor,
+        foregroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
@@ -49,6 +49,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 children: [
                   Text("Date", style: kPrimaryText),
                   ElevatedButton(
+                     style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
                     child: Text(formatter.format(startDate!)),
                     onPressed: () async {
                       startDate = await DatePicker.showSimpleDatePicker(
@@ -73,6 +74,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 children: [
                   Text("Actual In-Time", style: kPrimaryText),
                   ElevatedButton(
+                     style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
                     child: Text(inTime!.format(context)),
                     onPressed: () async {
                       inTime = await showTimePicker(
@@ -92,6 +94,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 children: [
                   Text("Actual Out-Time", style: kPrimaryText),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
                     child: Text(outTime!.format(context)),
                     onPressed: () async {
                       outTime = await showTimePicker(
@@ -104,7 +107,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 ],
               ),
             ),
-            RoundedButton(title: 'Apply', color: Colors.lightBlueAccent, onPressed: () {}),
+            RoundedButton(title: 'Apply', color: kRoyaleBlue, onPressed: () {}),
           ],
         ),
       ),

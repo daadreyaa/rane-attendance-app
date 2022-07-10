@@ -28,12 +28,11 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
       appBar: AppBar(
         title: Text(
           'Attendance',
-          style: GoogleFonts.lexendDeca(
-            textStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700),
-          ),
+          style:kHeadingText
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: kAppbarTextColor,
+        foregroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
@@ -62,16 +61,17 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   'Present',
                   style: GoogleFonts.lexendDeca(
                       textStyle: const TextStyle(
+                        color: kBackgroundColor,
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   )),
                 ),
               ),
-              width: MediaQuery.of(context).size.width * 0.7,
-              height: 100,
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: 70,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5.0),
-                color: Colors.blue.shade300,
+                color: kRoyaleBlue,
               ),
             ),
             const SizedBox(
