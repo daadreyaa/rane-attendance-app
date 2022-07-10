@@ -40,6 +40,7 @@ dependencies:
   horizontal_center_date_picker: ^2.1.1
   toggle_switch: ^2.0.1
   flutter_holo_date_picker: ^1.0.3
+  month_picker_dialog: ^0.4.0
 
 dev_dependencies:
   flutter_test:

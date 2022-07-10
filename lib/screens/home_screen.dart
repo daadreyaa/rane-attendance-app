@@ -4,7 +4,7 @@ import 'package:rane_mobile_app/components/constants.dart';
 import 'package:rane_mobile_app/screens/attendance_screen.dart';
 import 'package:rane_mobile_app/screens/forgot_punch.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
-import 'package:rane_mobile_app/screens/ovetime_screen.dart';
+import 'package:rane_mobile_app/screens/overtime_screen.dart';
 
 import '../components/constants.dart';
 
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: kBackgroundColor,
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
           'Welcome',
@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: const Color(0xffe4e3e9),
       ),
-      backgroundColor: const Color(0xffe4e3e9),
       body: Center(
         child: Column(
           children: [
@@ -178,32 +177,7 @@ class SelectOptionContainer extends StatelessWidget {
         height: 110,
         width: 110,
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: const Color(0xffefeeee),
-          borderRadius: BorderRadius.circular(10),
-          gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xffefeeee),
-              Color(0xffefeeee),
-            ],
-          ),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0xffffffff),
-              offset: Offset(-15.0, -15.0),
-              blurRadius: 30,
-              spreadRadius: 0.0,
-            ),
-            BoxShadow(
-              color: Color(0xffd1d0d0),
-              offset: Offset(15.0, 15.0),
-              blurRadius: 30,
-              spreadRadius: 0.0,
-            ),
-          ],
-        ),
+        decoration: kBoxDecoration,
       ),
     );
   }

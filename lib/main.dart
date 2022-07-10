@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:rane_mobile_app/screens/attendance_screen.dart';
 import 'package:rane_mobile_app/screens/forgot_punch.dart';
 import 'package:rane_mobile_app/screens/home_screen.dart';
 import 'package:rane_mobile_app/screens/comp_page.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen.dart';
-import 'package:rane_mobile_app/screens/ovetime_screen.dart';
+import 'package:rane_mobile_app/screens/overtime_details_screen.dart';
+import 'package:rane_mobile_app/screens/overtime_screen.dart';
 
-import 'screens/attendance_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +25,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
       initialRoute: HomeScreen.id,
       routes: {
         LoginPage.id: (context) => const LoginPage(),
@@ -32,6 +38,7 @@ class MyApp extends StatelessWidget {
         ForgotPunch.id: (context) => const ForgotPunch(),
         CompPage.id: (context) => const CompPage(),
         OvertimeScreen.id: (context) => const OvertimeScreen(),
+        OvertimeDetailsScreen.id: (context) => const OvertimeDetailsScreen(),
       },
     );
   }
