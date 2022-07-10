@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:rane_mobile_app/components/constants.dart';
 import 'package:flutter_holo_date_picker/date_time_formatter.dart';
@@ -21,26 +22,27 @@ class _CompPageState extends State<CompPage> {
   late DateTime? startDate = now;
   late DateTime? endDate = now.add(const Duration(days: 1));
 
-  DateFormat formatter = DateFormat('yyyy-MM-dd');
+  DateFormat formatter = DateFormat('dd-MM-yyyy');
   @override
   Widget build(BuildContext context) {
     TextEditingController _controller1 = TextEditingController();
-    TextEditingController _controller2 = TextEditingController();
-    TextEditingController _controller3 = TextEditingController();
-    TextEditingController _controller4 = TextEditingController();
+
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         title: Text(
-          'C-Off',
-          style: kPrimaryText,
+          'Comp-Off',
+          style: GoogleFonts.lexendDeca(
+            textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700, color: Colors.black),
+          ),
         ),
+        backgroundColor: kAppbarTextColor,
+        foregroundColor: Colors.black,
         centerTitle: true,
       ),
       body: Container(
-        
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
           child: Column(
             children: [
               const SizedBox(
@@ -97,7 +99,11 @@ class _CompPageState extends State<CompPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Total In Hours:', style: kPrimaryText),
+                  Text('In Time: ', style: kPrimaryText),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Text('10:00 AM', style: GoogleFonts.lexendDeca(fontSize: 20, fontWeight: FontWeight.w400)),
                   const SizedBox(
                     width: 20,
                   ),
@@ -109,7 +115,27 @@ class _CompPageState extends State<CompPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Total Out Hours:', style: kPrimaryText),
+                  Text('Out Time:', style: kPrimaryText),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Text('10:10 PM', style: GoogleFonts.lexendDeca(fontSize: 20, fontWeight: FontWeight.w400)),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Total hours:', style: kPrimaryText),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Text('12 Hrs 10 Mins', style: GoogleFonts.lexendDeca(fontSize: 20, fontWeight: FontWeight.w400)),
                   const SizedBox(
                     width: 20,
                   ),
@@ -122,7 +148,7 @@ class _CompPageState extends State<CompPage> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: TextField(
-                  controller: _controller4,
+                  controller: _controller1,
                   style: const TextStyle(color: Colors.black),
                 ),
               ),

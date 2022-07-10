@@ -20,7 +20,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
   late DateTime? startDate = now;
   late DateTime? endDate = now.add(const Duration(days: 1));
 
-  DateFormat formatter = DateFormat('yyyy-MM-dd');
+  DateFormat formatter = DateFormat('dd-MM-yyyy');
 
   TimeOfDay? inTime = TimeOfDay.now();
   TimeOfDay? outTime = TimeOfDay.now();
@@ -81,11 +81,15 @@ class _ForgotPunchState extends State<ForgotPunch> {
                     ),
                     child: Text(inTime!.format(context)),
                     onPressed: () async {
-                      inTime = await showTimePicker(
+                      var time = await showTimePicker(
                         context: context,
                         initialTime: inTime!,
-                      ) as TimeOfDay;
-                      if (inTime != null) setState(() {});
+                      );
+                      if (time != null) {
+                        setState(() {
+                          inTime = time;
+                        });
+                      }
                     },
                   ),
                 ],
@@ -104,11 +108,15 @@ class _ForgotPunchState extends State<ForgotPunch> {
                     ),
                     child: Text(outTime!.format(context)),
                     onPressed: () async {
-                      outTime = await showTimePicker(
+                      var time = await showTimePicker(
                         context: context,
                         initialTime: outTime!,
-                      ) as TimeOfDay;
-                      if (outTime != null) setState(() {});
+                      );
+                      if (time != null) {
+                        setState(() {
+                          outTime = time;
+                        });
+                      }
                     },
                   ),
                 ],
@@ -136,7 +144,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
                   ),
                   border: OutlineInputBorder(),
                 ),
-                autofocus: true,
+                // autofocus: true,
                 style: GoogleFonts.lexendDeca(
                   textStyle: const TextStyle(fontSize: 14.0),
                 ),

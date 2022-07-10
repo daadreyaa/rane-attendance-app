@@ -20,7 +20,7 @@ class _LeavePageState extends State<LeavePage> {
   late DateTime? startDate = now;
   late DateTime? endDate = now.add(const Duration(days: 1));
 
-  DateFormat formatter = DateFormat('yyyy-MM-dd');
+  DateFormat formatter = DateFormat('dd-MM-yyyy');
 
   @override
   Widget build(BuildContext context) {
