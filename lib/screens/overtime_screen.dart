@@ -68,7 +68,7 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
                     ),
                   ),
                 ),
-                decoration: kBoxDecoration.copyWith(color: Colors.white),
+                // decoration: kBoxDecoration.copyWith(color: Colors.white),
               ),
             ),
             const Padding(

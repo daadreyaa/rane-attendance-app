@@ -25,21 +25,19 @@ class _ForgotPunchState extends State<ForgotPunch> {
   TimeOfDay? inTime = TimeOfDay.now();
   TimeOfDay? outTime = TimeOfDay.now();
 
+  String? description = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-       backgroundColor: kBackgroundColor,
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        title: Text(
-          'Forgot Punch',
-          style: kHeadingText
-        ),
+        title: Text('Forgot Punch', style: kHeadingText),
         centerTitle: true,
         backgroundColor: kAppbarTextColor,
         foregroundColor: Colors.black,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
@@ -49,7 +47,10 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 children: [
                   Text("Date", style: kPrimaryText),
                   ElevatedButton(
-                     style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
+                    style: ElevatedButton.styleFrom(
+                      primary: kRoyaleBlue,
+                      fixedSize: const Size(120, 30),
+                    ),
                     child: Text(formatter.format(startDate!)),
                     onPressed: () async {
                       startDate = await DatePicker.showSimpleDatePicker(
@@ -74,7 +75,10 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 children: [
                   Text("Actual In-Time", style: kPrimaryText),
                   ElevatedButton(
-                     style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
+                    style: ElevatedButton.styleFrom(
+                      primary: kRoyaleBlue,
+                      fixedSize: const Size(120, 30),
+                    ),
                     child: Text(inTime!.format(context)),
                     onPressed: () async {
                       inTime = await showTimePicker(
@@ -94,7 +98,10 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 children: [
                   Text("Actual Out-Time", style: kPrimaryText),
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: kRoyaleBlue),
+                    style: ElevatedButton.styleFrom(
+                      primary: kRoyaleBlue,
+                      fixedSize: const Size(120, 30),
+                    ),
                     child: Text(outTime!.format(context)),
                     onPressed: () async {
                       outTime = await showTimePicker(
@@ -105,6 +112,37 @@ class _ForgotPunchState extends State<ForgotPunch> {
                     },
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text(
+                'Description',
+                textAlign: TextAlign.center,
+                style: kPrimaryText,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
+              child: TextField(
+                textAlign: TextAlign.center,
+                maxLines: 3,
+                decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  border: OutlineInputBorder(),
+                ),
+                autofocus: true,
+                style: GoogleFonts.lexendDeca(
+                  textStyle: const TextStyle(fontSize: 14.0),
+                ),
+                onChanged: (newText) {
+                  description = newText;
+                },
               ),
             ),
             RoundedButton(title: 'Apply', color: kRoyaleBlue, onPressed: () {}),

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      initialRoute: HomeScreen.id,
+      initialRoute: OvertimeScreen.id,
       routes: {
         LoginPage.id: (context) => const LoginPage(),
         HomeScreen.id: (context) => const HomeScreen(),
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         CompPage.id: (context) => const CompPage(),
         OvertimeScreen.id: (context) => const OvertimeScreen(),
         OvertimeDetailsScreen.id: (context) => const OvertimeDetailsScreen(),
-        ShiftChangePage.id:(context) => const ShiftChangePage(),
+        ShiftChangePage.id: (context) => const ShiftChangePage(),
       },
     );
   }

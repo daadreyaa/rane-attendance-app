@@ -26,11 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           'Welcome',
           style: GoogleFonts.lexendDeca(
-            textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700, color: Colors.black
-            ),
+            textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700, color: Colors.black),
           ),
         ),
-    backgroundColor: kAppbarTextColor,
+        backgroundColor: kAppbarTextColor,
       ),
       body: Center(
         child: Column(
