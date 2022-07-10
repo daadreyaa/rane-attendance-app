@@ -152,8 +152,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
                   context: context,
                   builder: (context) {
                     return Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: Text('hello world'),
+                      child: ConfirmationModal(),
                     );
                   },
                 );
@@ -161,6 +160,119 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
               fontSize: 20.0,
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ConfirmationModal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    String machineName = '';
+    String description = '';
+
+    return Container(
+      color: Color(0xFF757575),
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Machine Name',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.lightBlueAccent,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                autofocus: true,
+                decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  border: OutlineInputBorder(),
+                ),
+                style: GoogleFonts.lexendDeca(
+                  textStyle: const TextStyle(fontSize: 14.0),
+                ),
+                onChanged: (newText) {
+                  machineName = newText;
+                },
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              const Padding(
+                padding: EdgeInsets.all(4.0),
+                child: Text(
+                  'Description',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.lightBlueAccent,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                maxLines: 4,
+                decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  ),
+                  border: OutlineInputBorder(),
+                ),
+                autofocus: true,
+                style: GoogleFonts.lexendDeca(
+                  textStyle: const TextStyle(fontSize: 14.0),
+                ),
+                onChanged: (newText) {
+                  description = newText;
+                },
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              TextButton(
+                child: const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: Text(
+                    'Apply',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.lightBlueAccent,
+                ),
+                onPressed: () {
+                  if (machineName != '' && description != '') {
+                    Navigator.pop(context);
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
