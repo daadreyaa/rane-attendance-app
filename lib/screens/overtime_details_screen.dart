@@ -223,7 +223,7 @@ class ConfirmationModal extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.all(4.0),
                 child: Text(
-                  'Description',
+                  'Work Carried Out',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: kRoyaleBlue,

@@ -25,7 +25,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
   TimeOfDay? inTime = TimeOfDay.now();
   TimeOfDay? outTime = TimeOfDay.now();
 
-  String? description = '';
+  String? reason = '';
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +128,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text(
-                'Description',
+                'Reason',
                 textAlign: TextAlign.center,
                 style: kPrimaryText,
               ),
@@ -149,7 +149,7 @@ class _ForgotPunchState extends State<ForgotPunch> {
                   textStyle: const TextStyle(fontSize: 14.0),
                 ),
                 onChanged: (newText) {
-                  description = newText;
+                  reason = newText;
                 },
               ),
             ),

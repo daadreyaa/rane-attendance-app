@@ -264,7 +264,7 @@ class _LeavePageState extends State<LeavePage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             const Divider(),
@@ -283,44 +283,56 @@ class _LeavePageState extends State<LeavePage> {
                   Row(
                     children: [
                       Text("CL:", style: kPrimaryText),
-                      SizedBox(
+                      const SizedBox(
                         width: 70,
                       ),
                       Text("10", style: kPrimaryText),
                     ],
                   ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   Row(
                     children: [
                       Text("PL:", style: kPrimaryText),
-                      SizedBox(
+                      const SizedBox(
                         width: 73,
                       ),
                       Text("10", style: kPrimaryText),
                     ],
                   ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   Row(
                     children: [
                       Text("Total:", style: kPrimaryText),
-                      SizedBox(
-                        width: 50,
+                      const SizedBox(
+                        width: 53,
                       ),
                       Text("10", style: kPrimaryText),
                     ],
+                  ),
+                  const SizedBox(
+                    height: 5.0,
                   ),
                   Row(
                     children: [
                       Text("Availed:", style: kPrimaryText),
-                      SizedBox(
-                        width: 27,
+                      const SizedBox(
+                        width: 33,
                       ),
                       Text("10", style: kPrimaryText),
                     ],
                   ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   Row(
                     children: [
                       Text("Balance:", style: kPrimaryText),
-                      SizedBox(
-                        width: 20,
+                      const SizedBox(
+                        width: 26,
                       ),
                       Text("10", style: kPrimaryText),
                     ],

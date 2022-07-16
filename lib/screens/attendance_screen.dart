@@ -24,64 +24,64 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: kBackgroundColor,
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        title: Text(
-          'Attendance',
-          style:kHeadingText
-        ),
+        title: Text('Attendance', style: kHeadingText),
         centerTitle: true,
         backgroundColor: kAppbarTextColor,
         foregroundColor: Colors.black,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 10,),
-            Container(
-              color: Colors.grey,
-              alignment: Alignment.center,
-              child: HorizontalDatePickerWidget(
-                locale: 'en_US',
-                startDate: startDate,
-                endDate: endDate,
-                selectedDate: now,
-                normalColor: Colors.white,
-                widgetWidth: MediaQuery.of(context).size.width,
-                datePickerController: _datePickerController,
-                onValueSelected: (date) {
-                  print('selected = ${date.toIso8601String()}');
-                },
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            color: Colors.grey,
+            alignment: Alignment.center,
+            child: HorizontalDatePickerWidget(
+              locale: 'en_US',
+              startDate: startDate,
+              endDate: endDate,
+              selectedDate: now,
+              normalColor: Colors.white,
+              widgetWidth: MediaQuery.of(context).size.width,
+              datePickerController: _datePickerController,
+              onValueSelected: (date) {
+                print('selected = ${date.toIso8601String()}');
+              },
+            ),
+          ),
+          const SizedBox(height: 20.0),
+          Container(
+            child: Center(
+              child: Text(
+                'Present',
+                style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                  color: kBackgroundColor,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                )),
               ),
             ),
-            const SizedBox(height: 20.0),
-            Container(
-              child: Center(
-                child: Text(
-                  'Present',
-                  style: GoogleFonts.lexendDeca(
-                      textStyle: const TextStyle(
-                        color: kBackgroundColor,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  )),
-                ),
-              ),
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: 70,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: kRoyaleBlue,
-              ),
+            width: MediaQuery.of(context).size.width * 0.6,
+            height: 70,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.0),
+              color: kRoyaleBlue,
             ),
-            const SizedBox(
-              height: 40.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          const SizedBox(
+            height: 40.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'In Time',
+                  'In Time'.toString().padRight(21),
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
                       fontSize: 20.0,
@@ -89,12 +89,12 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 20.0,
-                  child: Center(
-                    child: Text(':'),
-                  ),
-                ),
+                // const SizedBox(
+                //   width: 20.0,
+                //   child: Center(
+                //     child: Text(':'),
+                //   ),
+                // ),
                 Text(
                   '10:00 AM',
                   style: GoogleFonts.lexendDeca(
@@ -106,14 +106,17 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Out Time',
+                  'Out Time'.toString().padRight(20),
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
                       fontSize: 20.0,
@@ -121,12 +124,12 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 20.0,
-                  child: Center(
-                    child: Text(':'),
-                  ),
-                ),
+                // const SizedBox(
+                //   width: 20.0,
+                //   child: Center(
+                //     child: Text(':'),
+                //   ),
+                // ),
                 Text(
                   '5:00 PM',
                   style: GoogleFonts.lexendDeca(
@@ -138,14 +141,17 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Shift',
+                  'Total Hours'.toString().padRight(19),
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
                       fontSize: 20.0,
@@ -153,12 +159,47 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 20.0,
-                  child: Center(
-                    child: Text(':'),
+                // const SizedBox(
+                //   width: 20.0,
+                //   child: Center(
+                //     child: Text(':'),
+                //   ),
+                // ),
+                Text(
+                  '7 hours',
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Shift'.toString().padRight(25),
+                  style: GoogleFonts.lexendDeca(
+                    textStyle: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                // const SizedBox(
+                //   width: 20.0,
+                //   child: Center(
+                //     child: Text(':'),
+                //   ),
+                // ),
                 Text(
                   '1 (10:00 AM - 5:00PM)',
                   style: GoogleFonts.lexendDeca(
@@ -170,8 +211,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
