@@ -6,6 +6,7 @@ import 'package:rane_mobile_app/screens/forgot_punch.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_screen.dart';
 import 'package:rane_mobile_app/screens/dashboard_screen.dart';
+import 'package:rane_mobile_app/screens/profile_screen.dart';
 import 'package:rane_mobile_app/screens/shift_change_screen.dart';
 
 import '../components/constants.dart';
@@ -45,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 180,
               child: const CircleAvatar(
                 backgroundImage: NetworkImage(
-                  'https://lenstax.com/auth/app-assets/images/profile/user-uploads/user-04.jpg',
+                  'https://www.iwmbuzz.com/wp-content/uploads/2021/07/5-times-alexandra-daddario-left-netizens-lovestruck-in-cute-smiles-grey-eyes-3.jpg',
+                
                 ),
                 radius: 80,
               ),
@@ -92,6 +94,11 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SelectOptionContainer(
+                  title: 'Profile',
+                  imageLocation: 'images/profile.png',
+                  onTap: () => Navigator.pushNamed(context, ProfilePage.id),
+                ),
+                SelectOptionContainer(
                   title: 'Dashboard',
                   imageLocation: 'images/dashboard.png',
                   onTap: () => Navigator.pushNamed(context, DashBoardPage.id),
@@ -119,6 +126,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   imageLocation: 'images/change_shift.png',
                   onTap: () => Navigator.pushNamed(context, ShiftChangePage.id),
                 ),
+                 SelectOptionContainer(
+                  title: 'Profile',
+                  imageLocation: 'images/profile.png',
+                  onTap: () => Navigator.pushNamed(context, ProfilePage.id),
+                ),
               ],
             ),
             const SizedBox(
@@ -136,6 +148,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: 'Forgot Punch',
                   imageLocation: 'images/forgot_punch.png',
                   onTap: () => Navigator.pushNamed(context, ForgotPunch.id),
+                ),
+                 SelectOptionContainer(
+                  title: 'Profile',
+                  imageLocation: 'images/profile.png',
+                  onTap: () => Navigator.pushNamed(context, ProfilePage.id),
                 ),
               ],
             ),
