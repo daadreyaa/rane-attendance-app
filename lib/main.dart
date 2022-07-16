@@ -9,6 +9,7 @@ import 'package:rane_mobile_app/screens/overtime_details_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_screen.dart';
 import 'package:rane_mobile_app/screens/dashboard_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:rane_mobile_app/screens/profile_screen.dart';
 import 'package:rane_mobile_app/screens/shift_change_screen.dart';
 
 void main() {
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         OvertimeDetailsScreen.id: (context) => const OvertimeDetailsScreen(),
         ShiftChangePage.id: (context) => const ShiftChangePage(),
         DashBoardPage.id: (context) => const DashBoardPage(),
+        ProfilePage.id: (context) => const ProfilePage(),
       },
     );
   }
