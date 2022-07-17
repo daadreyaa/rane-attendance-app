@@ -14,8 +14,6 @@ class LeavePage extends StatefulWidget {
 }
 
 class _LeavePageState extends State<LeavePage> {
-  String dropdownvalue = 'Item 1';
-
   DateTime now = DateTime.now();
   late DateTime? startDate = now;
   late DateTime? endDate = now.add(const Duration(days: 1));
@@ -30,7 +28,7 @@ class _LeavePageState extends State<LeavePage> {
         foregroundColor: Colors.black,
         backgroundColor: kAppbarTextColor,
         title: Text(
-          "Leave/OD",
+          "Leave",
           style: kHeadingText,
         ),
         centerTitle: true,
@@ -41,10 +39,67 @@ class _LeavePageState extends State<LeavePage> {
             const SizedBox(
               height: 20,
             ),
+            Text("Leave Balance", style: kPrimaryText.copyWith(decoration: TextDecoration.underline)),
+            const SizedBox(
+              height: 20,
+            ),
+            DataTable(
+              columns: [
+                DataColumn(
+                  label: Text('Leave\nType', style: kTableColumnText),
+                ),
+                DataColumn(
+                  label: Text('Total', style: kTableColumnText),
+                ),
+                DataColumn(
+                  label: Text('Availed', style: kTableColumnText),
+                ),
+                DataColumn(
+                  label: Text('Balance', style: kTableColumnText),
+                ),
+              ],
+              rows: [
+                DataRow(
+                  cells: <DataCell>[
+                    DataCell(
+                      Text('CL', style: kTableRowText),
+                    ),
+                    DataCell(
+                      Text('10', style: kTableRowText),
+                    ),
+                    DataCell(
+                      Text('2', style: kTableRowText),
+                    ),
+                    DataCell(
+                      Text('8', style: kTableRowText),
+                    ),
+                  ],
+                ),
+                DataRow(
+                  cells: <DataCell>[
+                    DataCell(
+                      Text('PL', style: kTableRowText),
+                    ),
+                    DataCell(
+                      Text('10', style: kTableRowText),
+                    ),
+                    DataCell(
+                      Text('3', style: kTableRowText),
+                    ),
+                    DataCell(
+                      Text('7', style: kTableRowText),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const Divider(
+              thickness: 3,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text("Type of leave: ", style: kPrimaryText),
                   Container(
@@ -64,8 +119,8 @@ class _LeavePageState extends State<LeavePage> {
                           inactiveBgColor: kTertiaryColor,
                           inactiveFgColor: Colors.blueGrey,
                           initialLabelIndex: 0,
-                          totalSwitches: 3,
-                          labels: const ['CL', 'PL', 'OD'],
+                          totalSwitches: 2,
+                          labels: const ['CL', 'PL'],
                           onToggle: (index) {
                             print('switched to: $index');
                           },
@@ -265,84 +320,77 @@ class _LeavePageState extends State<LeavePage> {
               ),
             ),
             const SizedBox(
-              height: 10,
-            ),
-            const Divider(),
-            const SizedBox(
               height: 20,
             ),
-            Text("Leave Balance", style: kPrimaryText),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.33, 8, 8, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Text("CL:", style: kPrimaryText),
-                      const SizedBox(
-                        width: 70,
-                      ),
-                      Text("10", style: kPrimaryText),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Row(
-                    children: [
-                      Text("PL:", style: kPrimaryText),
-                      const SizedBox(
-                        width: 73,
-                      ),
-                      Text("10", style: kPrimaryText),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Row(
-                    children: [
-                      Text("Total:", style: kPrimaryText),
-                      const SizedBox(
-                        width: 53,
-                      ),
-                      Text("10", style: kPrimaryText),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Row(
-                    children: [
-                      Text("Availed:", style: kPrimaryText),
-                      const SizedBox(
-                        width: 33,
-                      ),
-                      Text("10", style: kPrimaryText),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Row(
-                    children: [
-                      Text("Balance:", style: kPrimaryText),
-                      const SizedBox(
-                        width: 26,
-                      ),
-                      Text("10", style: kPrimaryText),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
+
+            // Padding(
+            //   padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.33, 8, 8, 8),
+            //   child: Column(
+            //     // crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       Row(
+            //         children: [
+            //           Text("CL:", style: kPrimaryText),
+            //           const SizedBox(
+            //             width: 70,
+            //           ),
+            //           Text("10", style: kPrimaryText),
+            //         ],
+            //       ),
+            //       const SizedBox(
+            //         height: 5.0,
+            //       ),
+            //       Row(
+            //         children: [
+            //           Text("PL:", style: kPrimaryText),
+            //           const SizedBox(
+            //             width: 73,
+            //           ),
+            //           Text("10", style: kPrimaryText),
+            //         ],
+            //       ),
+            //       const SizedBox(
+            //         height: 5.0,
+            //       ),
+            //       Row(
+            //         children: [
+            //           Text("Total:", style: kPrimaryText),
+            //           const SizedBox(
+            //             width: 53,
+            //           ),
+            //           Text("10", style: kPrimaryText),
+            //         ],
+            //       ),
+            //       const SizedBox(
+            //         height: 5.0,
+            //       ),
+            //       Row(
+            //         children: [
+            //           Text("Availed:", style: kPrimaryText),
+            //           const SizedBox(
+            //             width: 33,
+            //           ),
+            //           Text("10", style: kPrimaryText),
+            //         ],
+            //       ),
+            //       const SizedBox(
+            //         height: 5.0,
+            //       ),
+            //       Row(
+            //         children: [
+            //           Text("Balance:", style: kPrimaryText),
+            //           const SizedBox(
+            //             width: 26,
+            //           ),
+            //           Text("10", style: kPrimaryText),
+            //         ],
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 30,
+            // ),
             RoundedButton(
               title: "Submit",
               color: kRoyaleBlue,

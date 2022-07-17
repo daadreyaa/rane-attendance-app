@@ -54,15 +54,52 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(
               height: 10,
             ),
-            const Center(
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                  'https://www.iwmbuzz.com/wp-content/uploads/2021/07/5-times-alexandra-daddario-left-netizens-lovestruck-in-cute-smiles-grey-eyes-3.jpg',
+            Center(
+              child: Container(
+                alignment: Alignment.center,
+                height: 135,
+                width: 135,
+                child: const Hero(
+                  tag: 'profile-photo',
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      'https://www.iwmbuzz.com/wp-content/uploads/2021/07/5-times-alexandra-daddario-left-netizens-lovestruck-in-cute-smiles-grey-eyes-3.jpg',
+                    ),
+                    radius: 60,
+                  ),
                 ),
-                radius: 60,
+                decoration: const BoxDecoration(
+                  color: Color(0xffefeeee),
+                  shape: BoxShape.circle,
+                  // borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xffefeeee),
+                      Color(0xffefeeee),
+                    ],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xffffffff),
+                      offset: Offset(-20.0, -20.0),
+                      blurRadius: 30,
+                      spreadRadius: 0.0,
+                    ),
+                    BoxShadow(
+                      color: Color(0xffd1d0d0),
+                      offset: Offset(20.0, 20.0),
+                      blurRadius: 30,
+                      spreadRadius: 0.0,
+                    ),
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             ProfileField(
               textController1: textController1,
               enable: false,
@@ -106,7 +143,11 @@ class _ProfilePageState extends State<ProfilePage> {
               initValue: "1234567890",
             ),
             RoundedButton(
-                title: "Save Changes", color: kRoyaleBlue, onPressed: null,fontSize: 18,)
+              title: "Save Changes",
+              color: kRoyaleBlue,
+              onPressed: null,
+              fontSize: 18,
+            )
           ],
         ),
       ),
@@ -151,7 +192,7 @@ class ProfileField extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(
-              color: const Color(0xFFDBE2E7),
+              color: Color(0xFFDBE2E7),
               width: 2,
             ),
             borderRadius: BorderRadius.circular(8),

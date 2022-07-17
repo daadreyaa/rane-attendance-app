@@ -15,7 +15,7 @@ class OvertimeScreen extends StatefulWidget {
 }
 
 class _OvertimeScreenState extends State<OvertimeScreen> {
-  DateTime? selectedDate;
+  DateTime? selectedDate = DateTime.now();
   DateFormat formatter = DateFormat('MMMM - yyyy');
 
   @override
@@ -41,11 +41,12 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
             ),
             InkWell(
               onTap: () {
+                DateTime dateTime = DateTime.now();
                 showMonthPicker(
                   context: context,
-                  firstDate: DateTime(DateTime.now().year - 1, 5),
-                  lastDate: DateTime(DateTime.now().year + 1, 9),
-                  initialDate: selectedDate ?? DateTime.now(),
+                  firstDate: DateTime(dateTime.year, dateTime.month - 6),
+                  lastDate: DateTime(dateTime.year, dateTime.month),
+                  initialDate: dateTime,
                   locale: const Locale("en"),
                 ).then((date) {
                   if (date != null) {
@@ -79,34 +80,37 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
                 endIndent: 10.0,
               ),
             ),
-            Expanded(
-              child: SingleChildScrollView(
-                physics: const ScrollPhysics(),
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      onTap: () => Navigator.pushNamed(context, OvertimeDetailsScreen.id),
-                      child: Card(
-                        elevation: 8.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: ListTile(
-                            title: Text(
-                              'date',
-                              style: GoogleFonts.lexendDeca(
-                                textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+            Visibility(
+              visible: selectedDate != null,
+              child: Expanded(
+                child: SingleChildScrollView(
+                  physics: const ScrollPhysics(),
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 10,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: () => Navigator.pushNamed(context, OvertimeDetailsScreen.id),
+                        child: Card(
+                          elevation: 8.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            child: ListTile(
+                              title: Text(
+                                'date',
+                                style: GoogleFonts.lexendDeca(
+                                  textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+                                ),
                               ),
-                            ),
-                            trailing: const Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 20.0,
+                              trailing: const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 20.0,
+                              ),
                             ),
                           ),
                         ),

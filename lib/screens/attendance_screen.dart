@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
 import 'package:horizontal_center_date_picker/horizontal_date_picker.dart';
-
-import '../components/constants.dart';
+import 'package:rane_mobile_app/components/constants.dart';
 
 class AttendanceScreen extends StatefulWidget {
   const AttendanceScreen({Key? key}) : super(key: key);
@@ -19,7 +18,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
 
   DateTime now = DateTime.now();
   late DateTime startDate = now.subtract(const Duration(days: 14));
-  late DateTime endDate = now.add(const Duration(days: 7));
+  late DateTime endDate = now;
+
+  bool isPresent = true;
 
   @override
   Widget build(BuildContext context) {
@@ -56,20 +57,21 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
           Container(
             child: Center(
               child: Text(
-                'Present',
+                isPresent ? 'Present' : 'Absent',
                 style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                  color: kBackgroundColor,
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold,
-                )),
+                  textStyle: const TextStyle(
+                    color: kBackgroundColor,
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
             width: MediaQuery.of(context).size.width * 0.6,
             height: 70,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
-              color: kRoyaleBlue,
+              color: isPresent ? Color(0xFF1CCC5B) : Colors.red,
             ),
           ),
           const SizedBox(
@@ -81,7 +83,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'In Time'.toString().padRight(21),
+                  'In Time'.toString().padRight(17),
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
                       fontSize: 20.0,
@@ -116,7 +118,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Out Time'.toString().padRight(20),
+                  'Out Time'.toString().padRight(16),
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
                       fontSize: 20.0,
@@ -151,7 +153,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Total Hours'.toString().padRight(19),
+                  'Total Hours'.toString().padRight(15),
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
                       fontSize: 20.0,
@@ -186,7 +188,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Shift'.toString().padRight(25),
+                  'Shift'.toString().padRight(20),
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
                       fontSize: 20.0,

@@ -14,8 +14,6 @@ class OT_Page extends StatefulWidget {
 }
 
 class _OT_PageState extends State<OT_Page> {
-  String dropdownvalue = 'Item 1';
-
   DateTime now = DateTime.now();
   late DateTime? startDate = now;
   late DateTime? endDate = now.add(const Duration(days: 1));

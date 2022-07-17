@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rane_mobile_app/screens/attendance_screen.dart';
+import 'package:rane_mobile_app/screens/calendar_screen.dart';
 import 'package:rane_mobile_app/screens/forgot_punch.dart';
 import 'package:rane_mobile_app/screens/home_screen.dart';
 import 'package:rane_mobile_app/screens/comp_page.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen.dart';
+import 'package:rane_mobile_app/screens/on_duty_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_details_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_screen.dart';
 import 'package:rane_mobile_app/screens/dashboard_screen.dart';
@@ -44,6 +46,8 @@ class MyApp extends StatelessWidget {
         ShiftChangePage.id: (context) => const ShiftChangePage(),
         DashBoardPage.id: (context) => const DashBoardPage(),
         ProfilePage.id: (context) => const ProfilePage(),
+        OnDuty.id: (context) => const OnDuty(),
+        CalendarScreen.id: (context) => const CalendarScreen(),
       },
     );
   }

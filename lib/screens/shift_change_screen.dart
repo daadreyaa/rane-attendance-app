@@ -3,6 +3,7 @@ import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rane_mobile_app/components/constants.dart';
+import 'package:rane_mobile_app/components/rounded_button.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class ShiftChangePage extends StatefulWidget {
@@ -20,9 +21,12 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
 
   DateFormat formatter = DateFormat('dd-MM-yyyy');
 
-  List<int> shifts = [1, 2, 3];
-  late int currentShiftValue = shifts[0];
-  late int prefferedShiftValue = shifts[0];
+  List<String> shifts = ['A', 'B', 'C'];
+  String? currentShiftValue;
+  String? prefferedShiftValue;
+
+  List<String> persons = ['Sage', 'Killjoy', 'Chamber', 'Viper'];
+  String? selectedPerson;
 
   int indexValue = 0;
   String name = '';
@@ -120,20 +124,21 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  'Current Shift',
+                  'Current Shift  ',
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.black),
                   ),
                 ),
                 SizedBox(
                   height: 60,
-                  width: 75,
+                  width: 160,
                   child: InputDecorator(
                     decoration: const InputDecoration(border: OutlineInputBorder()),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
+                        hint: const Text('Current Shift'),
                         value: currentShiftValue,
-                        items: shifts.map((int shift) {
+                        items: shifts.map((String shift) {
                           return DropdownMenuItem(
                             child: Text(
                               shift.toString(),
@@ -144,7 +149,7 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
                             value: shift,
                           );
                         }).toList(),
-                        onChanged: (int? value) {
+                        onChanged: (String? value) {
                           setState(() {
                             currentShiftValue = value!;
                           });
@@ -169,13 +174,14 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
                 ),
                 SizedBox(
                   height: 60,
-                  width: 75,
+                  width: 160,
                   child: InputDecorator(
                     decoration: const InputDecoration(border: OutlineInputBorder()),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
+                        hint: const Text('Preffered shift'),
                         value: prefferedShiftValue,
-                        items: shifts.map((int shift) {
+                        items: shifts.map((String shift) {
                           return DropdownMenuItem(
                             child: Text(
                               shift.toString(),
@@ -186,7 +192,7 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
                             value: shift,
                           );
                         }).toList(),
-                        onChanged: (int? value) {
+                        onChanged: (String? value) {
                           setState(() {
                             prefferedShiftValue = value!;
                           });
@@ -241,7 +247,7 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
               ],
             ),
             const SizedBox(
-              height: 40.0,
+              height: 30.0,
             ),
             Visibility(
               visible: indexValue == 1,
@@ -259,25 +265,46 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 60,
                     width: 200,
-                    child: TextField(
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    child: InputDecorator(
+                      decoration: const InputDecoration(border: OutlineInputBorder()),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          hint: const Text('Select a person'),
+                          value: selectedPerson,
+                          items: persons.map((String person) {
+                            return DropdownMenuItem(
+                              child: Text(
+                                person.toString(),
+                                style: GoogleFonts.lexendDeca(
+                                  textStyle: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400, color: Colors.black),
+                                ),
+                              ),
+                              value: person,
+                            );
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              selectedPerson = value!;
+                            });
+                          },
                         ),
-                        border: OutlineInputBorder(),
                       ),
-                      style: GoogleFonts.lexendDeca(
-                        textStyle: const TextStyle(fontSize: 16.0),
-                      ),
-                      onChanged: (newText) {
-                        name = newText;
-                      },
                     ),
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Visibility(
+              visible: ((currentShiftValue != null && prefferedShiftValue != null && currentShiftValue != prefferedShiftValue) && ((indexValue == 1 && selectedPerson != null) || indexValue == 0)),
+              child: RoundedButton(
+                title: 'Apply',
+                color: kRoyaleBlue,
+                onPressed: () {},
               ),
             ),
           ],
