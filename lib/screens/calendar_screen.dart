@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
+  DateTime now = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +29,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
         centerTitle: true,
       ),
       backgroundColor: const Color(0xffe4e3e9),
+      body: TableCalendar(
+        firstDay: DateTime(now.year, now.month - 12),
+        lastDay: now,
+        focusedDay: now,
+        availableCalendarFormats: const {CalendarFormat.month: 'Month'},
+      ),
     );
   }
 }
