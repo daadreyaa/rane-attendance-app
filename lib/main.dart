@@ -6,6 +6,7 @@ import 'package:rane_mobile_app/screens/home_screen.dart';
 import 'package:rane_mobile_app/screens/comp_page.dart';
 import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen.dart';
+import 'package:rane_mobile_app/screens/login_screen_old.dart';
 import 'package:rane_mobile_app/screens/on_duty_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_details_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_screen.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      initialRoute: HomeScreen.id,
+      initialRoute: LoginScreen.id,
       routes: {
         LoginPage.id: (context) => const LoginPage(),
         HomeScreen.id: (context) => const HomeScreen(),
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         ProfilePage.id: (context) => const ProfilePage(),
         OnDuty.id: (context) => const OnDuty(),
         CalendarScreen.id: (context) => const CalendarScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
       },
     );
   }
