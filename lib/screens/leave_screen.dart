@@ -96,6 +96,10 @@ class _LeavePageState extends State<LeavePage> {
             const Divider(
               thickness: 3,
             ),
+            Text("Apply Leave", style: kPrimaryText.copyWith(decoration: TextDecoration.underline)),
+            const SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

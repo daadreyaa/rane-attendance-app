@@ -1,354 +1,230 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rane_mobile_app/screens/home_screen.dart';
 
-import 'package:rane_mobile_app/components/constants.dart';
-import 'package:rane_mobile_app/components/rounded_button.dart';
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
   static const String id = 'login_screen';
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  late TextEditingController emailAddressController;
-  late TextEditingController passwordController;
-  late bool passwordVisibility;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+class _LoginScreenState extends State<LoginScreen> {
+  String username = '', password = '';
+  final TextEditingController _username = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    emailAddressController = TextEditingController();
-    passwordController = TextEditingController();
-    passwordVisibility = false;
-  }
+  bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {
-    var textStyle2 = GoogleFonts.lexendDeca(
-      textStyle: TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.w400,
-        color: Colors.grey.shade500,
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(image: AssetImage('images/Shape1.png'), fit: BoxFit.cover),
       ),
-    );
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            Container(),
+            SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 70, 0, 30),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          if (Theme.of(context).brightness == Brightness.light)
-                            const FlutterLogo(
-                              size: 40,
-                            ),
-                          if (Theme.of(context).brightness == Brightness.dark)
-                            Image.network(
-                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/template-screens-hpce0u/assets/xofl99y11az0/@3xlogo_primary_color_white.png',
-                              width: 242,
-                              height: 60,
-                              fit: BoxFit.fitWidth,
-                            ),
-                        ],
+                    Container(
+                      padding: const EdgeInsets.only(left: 35, top: 8.0),
+                      child: Image.asset(
+                        "images/rane_bg.png",
+                        height: 80.0,
                       ),
                     ),
-                    Text(
-                      'Welcome Back!',
-                      style: GoogleFonts.lexendDeca(
-                        textStyle: const TextStyle(
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black,
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 35, right: 0.0),
+                      child: Text(
+                        'RML- DHRM',
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(fontSize: 30.0, color: Color(0xff175EAB), fontWeight: FontWeight.w800),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                      child: Text(
-                        'Use the form below to access your account.',
-                        style: textStyle2,
-                      ),
+                    const SizedBox(
+                      height: 30.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    Container(
+                      margin: const EdgeInsets.only(left: 35, right: 35),
+                      child: Column(
                         children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                              child: TextFormField(
-                                controller: emailAddressController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'Email Address',
-                                  labelStyle: textStyle2,
-                                  hintText: 'Enter your email here...',
-                                  hintStyle: textStyle2,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Colors.black87,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(40),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Colors.black87,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(40),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  contentPadding: const EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
-                                ),
-                                style: textStyle2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              controller: passwordController,
-                              obscureText: !passwordVisibility,
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                labelStyle: textStyle2,
-                                hintText: 'Enter your email here...',
-                                hintStyle: textStyle2,
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Colors.black87,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Colors.black87,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white,
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(16, 24, 24, 24),
-                                suffixIcon: InkWell(
-                                  onTap: () => setState(
-                                    () => passwordVisibility = !passwordVisibility,
-                                  ),
-                                  focusNode: FocusNode(skipTraversal: true),
-                                  child: Icon(
-                                    passwordVisibility ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                                    color: Colors.grey.shade500,
-                                    size: 22,
-                                  ),
-                                ),
-                              ),
-                              style: textStyle2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                            onTap: () {},
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.only(bottom: 10),
                             child: Text(
-                              'Forgot Password?',
-                              style: textStyle2,
-                            ),
-                          ),
-                          RoundedButton(
-                            title: 'Login',
-                            color: Colors.lightBlueAccent,
-                            onPressed: () {},
-                            width: 150,
-                            height: 20.0,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 24, 0, 12),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AutoSizeText(
-                            'Use a social platform to continue',
-                            textAlign: TextAlign.center,
-                            style: textStyle2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: const BoxDecoration(
-                                color: Colors.black,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5,
-                                    color: Color(0x3314181B),
-                                    offset: Offset(0, 2),
-                                  )
-                                ],
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: const AlignmentDirectional(0, 0),
-                              child: const FaIcon(
-                                FontAwesomeIcons.google,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: const BoxDecoration(
-                                color: Colors.black,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5,
-                                    color: Color(0x3314181B),
-                                    offset: Offset(0, 2),
-                                  )
-                                ],
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: const AlignmentDirectional(0, 0),
-                              child: const FaIcon(
-                                FontAwesomeIcons.apple,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: const BoxDecoration(
-                                color: Colors.black,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5,
-                                    color: Color(0x3314181B),
-                                    offset: Offset(0, 2),
-                                  )
-                                ],
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: const AlignmentDirectional(0, 0),
-                              child: const FaIcon(
-                                FontAwesomeIcons.facebookF,
-                                color: Colors.white,
-                                size: 24,
+                              "User-id",
+                              style: GoogleFonts.lexendDeca(
+                                textStyle: const TextStyle(fontSize: 20.0, color: Color(0xff708090), fontWeight: FontWeight.w600),
                               ),
                             ),
                           ),
                           Container(
-                            width: 50,
-                            height: 50,
-                            decoration: const BoxDecoration(
-                              color: Colors.black,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 5,
-                                  color: Color(0x3314181B),
-                                  offset: Offset(0, 2),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.grey.withOpacity(0.5),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                                  child: Icon(
+                                    Icons.person_outline,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                Container(
+                                  height: 30.0,
+                                  width: 1.0,
+                                  color: Colors.grey.withOpacity(0.5),
+                                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
+                                ),
+                                Expanded(
+                                  child: TextField(
+                                    //keyboardType: TextInputType.number,
+                                    // inputFormatters: [
+                                    //   FilteringTextInputFormatter.digitsOnly
+                                    // ],
+                                    // inputFormatters: [
+                                    //   FilteringTextInputFormatter.allow(
+                                    //       RegExp(r'[0-9]'))
+                                    // ],
+                                    controller: _username,
+                                    decoration: const InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Enter your User-id',
+                                      hintStyle: TextStyle(color: Colors.grey),
+                                    ),
+                                    onChanged: (value) {},
+                                  ),
                                 )
                               ],
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0, 0),
-                            child: const Icon(
-                              Icons.phone_sharp,
-                              color: Colors.white,
-                              size: 24,
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            'Don\'t have an account?',
-                            style: textStyle2,
+                          const SizedBox(
+                            height: 30,
                           ),
-                          Text(
-                            'Create Account',
-                            style: GoogleFonts.lexendDeca(
-                              textStyle: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.purple.shade500,
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "Password",
+                              style: GoogleFonts.lexendDeca(
+                                textStyle: const TextStyle(fontSize: 20.0, color: Color(0xff708090), fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.grey.withOpacity(0.5),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 10.0,
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        isObscure = !isObscure;
+                                      });
+                                    },
+                                    child: Icon(
+                                      isObscure ? Icons.lock_open : Icons.lock_outline,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 30.0,
+                                  width: 1.0,
+                                  color: Colors.grey.withOpacity(0.5),
+                                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
+                                ),
+                                Expanded(
+                                  child: TextField(
+                                    controller: _password,
+                                    obscureText: isObscure,
+                                    decoration: const InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Enter your password',
+                                      hintStyle: TextStyle(color: Colors.grey),
+                                    ),
+                                    onChanged: (value) {
+                                      //set username  text on change
+                                    },
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              boxShadow: const [BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)],
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight,
+                                stops: const [0.0, 1.0],
+                                colors: [
+                                  Colors.deepPurple.shade400,
+                                  Colors.blue.shade700,
+                                ],
+                              ),
+                              color: Colors.deepPurple.shade300,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.transparent,
+                                onPrimary: Colors.white,
+                                shadowColor: Colors.black12,
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
+                                minimumSize: const Size(180, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, HomeScreen.id);
+                              },
+                              child: Text(
+                                'Login',
+                                style: GoogleFonts.lexendDeca(
+                                  textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w800),
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

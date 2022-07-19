@@ -71,8 +71,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 12),
+                          padding: const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 12),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.44,
                             height: 190,
@@ -88,16 +87,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12, 8, 12, 8),
+                              padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 12, 8),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0, 12, 0, 0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                                     child: Text(
                                       'Days worked',
                                       style: kPrimaryText,
@@ -115,24 +111,20 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   Expanded(
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 0, 0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                           child: Text(
                                             'Count',
                                             style: kSecondaryText,
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 0, 0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                           child: Text(
-                                            '264/400',
+                                            '20/24',
                                             style: kSecondaryText,
                                           ),
                                         ),
@@ -141,14 +133,10 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0, 0, 0, 0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                       child: LinearPercentIndicator(
-                                        percent: 264/400,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.37,
+                                        percent: 264 / 400,
+                                        width: MediaQuery.of(context).size.width * 0.37,
                                         lineHeight: 8,
                                         animation: true,
                                         progressColor: const Color(0xff4B39EF),
@@ -168,8 +156,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             Navigator.pushNamed(context, AttendanceScreen.id);
                           },
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                2, 2, 2, 12),
+                            padding: const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 12),
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.44,
                               height: 220,
@@ -185,16 +172,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12, 8, 12, 8),
+                                padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 12, 8),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0, 12, 0, 0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                                       child: Text(
                                         'Attendance',
                                         style: kPrimaryText,
@@ -212,60 +196,50 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                     Expanded(
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
                                         children: [
                                           Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(0, 0, 4, 0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                                             child: Container(
                                               width: 16,
                                               height: 90,
                                               decoration: BoxDecoration(
                                                 color: const Color(0xff39D2C0),
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
+                                                borderRadius: BorderRadius.circular(12),
                                               ),
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(0, 0, 4, 0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                                             child: Container(
                                               width: 16,
                                               height: 60,
                                               decoration: BoxDecoration(
                                                 color: const Color(0xff39D2C0),
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
+                                                borderRadius: BorderRadius.circular(12),
                                               ),
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(0, 0, 4, 0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                                             child: Container(
                                               width: 16,
                                               height: 110,
                                               decoration: BoxDecoration(
                                                 color: const Color(0xff39D2C0),
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
+                                                borderRadius: BorderRadius.circular(12),
                                               ),
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(0, 0, 4, 0),
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                                             child: Container(
                                               width: 16,
                                               height: 60,
                                               decoration: BoxDecoration(
                                                 color: const Color(0xff39D2C0),
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
+                                                borderRadius: BorderRadius.circular(12),
                                               ),
                                             ),
                                           ),
@@ -274,8 +248,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                             height: 90,
                                             decoration: BoxDecoration(
                                               color: const Color(0xff39D2C0),
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
+                                              borderRadius: BorderRadius.circular(12),
                                             ),
                                           ),
                                         ],
@@ -293,15 +266,14 @@ class _DashBoardPageState extends State<DashBoardPage> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 12),
+                          padding: const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 12),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.44,
                             height: 220,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              boxShadow: [
-                                const BoxShadow(
+                              boxShadow: const [
+                                BoxShadow(
                                   blurRadius: 4,
                                   color: Color(0x34090F13),
                                   offset: const Offset(0, 2),
@@ -310,12 +282,10 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12, 8, 12, 8),
+                              padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 12, 8),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -323,16 +293,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                     style: kPrimaryText,
                                   ),
                                   Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0, 4, 0, 0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                     child: Text(
-                                      '34 days',
-                                      style:
-                                          GoogleFonts.lexendDeca(fontSize: 20),
+                                      '34/40 days',
+                                      style: GoogleFonts.lexendDeca(fontSize: 20),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   // Padding(
@@ -360,7 +327,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                     style: kPrimaryText,
                                   ),
                                   Text(
-                                    '23 days',
+                                    '23/30 days',
                                     style: GoogleFonts.lexendDeca(fontSize: 20),
                                   ),
                                 ],
@@ -369,42 +336,36 @@ class _DashBoardPageState extends State<DashBoardPage> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 12),
+                          padding: const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 12),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.44,
                             height: 180,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              boxShadow: [
-                                const BoxShadow(
+                              boxShadow: const [
+                                BoxShadow(
                                   blurRadius: 4,
                                   color: Color(0x34090F13),
-                                  offset: const Offset(0, 2),
+                                  offset: Offset(0, 2),
                                 )
                               ],
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12, 8, 12, 8),
+                              padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 12, 8),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0, 12, 0, 0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                                     child: Text(
                                       'Loss of pay',
                                       style: kPrimaryText,
                                     ),
                                   ),
                                   Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0, 4, 0, 0),
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                     child: Text(
                                       'Count',
                                       style: kSecondaryText,
@@ -413,10 +374,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   Expanded(
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         // Padding(
                                         //   padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
@@ -426,10 +385,9 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                         //   ),
                                         // ),
                                         Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 20, 0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 20, 0),
                                           child: Text(
-                                            '20 days',
+                                            '2 days',
                                             style: kPrimaryText,
                                           ),
                                         ),
@@ -438,14 +396,10 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0, 8, 0, 0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                                       child: LinearPercentIndicator(
                                         percent: 0.4,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.3,
+                                        width: MediaQuery.of(context).size.width * 0.3,
                                         lineHeight: 8,
                                         animation: true,
                                         progressColor: const Color(0xff4B39EF),
@@ -470,9 +424,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   Navigator.pushNamed(context, StatusScreen.id);
                 }),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xff4B39EF),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  decoration: BoxDecoration(color: Color(0xff4B39EF), borderRadius: BorderRadius.all(Radius.circular(20))),
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 12, 12),
                     child: Column(
@@ -494,16 +446,14 @@ class _DashBoardPageState extends State<DashBoardPage> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                                 child: Text(
                                   'Check status',
                                   style: kSecondaryWhiteText,
