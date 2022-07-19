@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         DashBoardPage.id: (context) => const DashBoardPage(),
         ProfilePage.id: (context) => const ProfilePage(),
         OnDuty.id: (context) => const OnDuty(),
-        CalendarScreen.id: (context) => const CalendarScreen(),
+        Calendar.id: (context) =>  Calendar(),
         StatusScreen.id: (context) => const StatusScreen(),
       },
     );

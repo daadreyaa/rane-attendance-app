@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SelectOptionContainer(
                   title: 'Calendar',
                   imageLocation: 'images/calendar.png',
-                  onTap: () => Navigator.pushNamed(context, CalendarScreen.id),
+                  onTap: () => Navigator.pushNamed(context, Calendar.id),
                 ),
                 SelectOptionContainer(
                   title: 'Attendance',
