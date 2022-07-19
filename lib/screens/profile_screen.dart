@@ -142,12 +142,12 @@ class _ProfilePageState extends State<ProfilePage> {
               labelText: 'Contact details',
               initValue: "1234567890",
             ),
-            RoundedButton(
-              title: "Save Changes",
-              color: kRoyaleBlue,
-              onPressed: null,
-              fontSize: 18,
-            )
+            // RoundedButton(
+            //   title: "Save Changes",
+            //   color: kRoyaleBlue,
+            //   onPressed: null,
+            //   fontSize: 18,
+            // )
           ],
         ),
       ),
@@ -181,7 +181,7 @@ class ProfileField extends StatelessWidget {
           labelText: labelText,
           labelStyle: GoogleFonts.lexendDeca(
             color: const Color(0xFF95A1AC),
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: FontWeight.normal,
           ),
           hintText: 'Enter your $labelText',

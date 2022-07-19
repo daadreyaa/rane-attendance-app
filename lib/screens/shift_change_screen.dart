@@ -120,131 +120,141 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
             const SizedBox(
               height: 40.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  'Current Shift  ',
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.black),
+            Padding(
+              padding:  EdgeInsets.fromLTRB(18,0,8,0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Current Shift  ',
+                    style: GoogleFonts.lexendDeca(
+                      textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.black),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 60,
-                  width: 160,
-                  child: InputDecorator(
-                    decoration: const InputDecoration(border: OutlineInputBorder()),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton(
-                        hint: const Text('Current Shift'),
-                        value: currentShiftValue,
-                        items: shifts.map((String shift) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              shift.toString(),
-                              style: GoogleFonts.lexendDeca(
-                                textStyle: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400, color: Colors.black),
+                  SizedBox(
+                    height: 60,
+                    width: 160,
+                    child: InputDecorator(
+                      decoration: const InputDecoration(border: OutlineInputBorder()),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          hint: const Text('Current Shift'),
+                          value: currentShiftValue,
+                          items: shifts.map((String shift) {
+                            return DropdownMenuItem(
+                              child: Text(
+                                shift.toString(),
+                                style: GoogleFonts.lexendDeca(
+                                  textStyle: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400, color: Colors.black),
+                                ),
                               ),
-                            ),
-                            value: shift,
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
-                          setState(() {
-                            currentShiftValue = value!;
-                          });
-                        },
+                              value: shift,
+                            );
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              currentShiftValue = value!;
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(
               height: 20.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  'Preffered Shift',
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.black),
+            Padding(
+              padding:  EdgeInsets.fromLTRB(18,0,8,0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Preffered Shift',
+                    style: GoogleFonts.lexendDeca(
+                      textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.black),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 60,
-                  width: 160,
-                  child: InputDecorator(
-                    decoration: const InputDecoration(border: OutlineInputBorder()),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton(
-                        hint: const Text('Preffered shift'),
-                        value: prefferedShiftValue,
-                        items: shifts.map((String shift) {
-                          return DropdownMenuItem(
-                            child: Text(
-                              shift.toString(),
-                              style: GoogleFonts.lexendDeca(
-                                textStyle: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400, color: Colors.black),
+                  SizedBox(
+                    height: 60,
+                    width: 160,
+                    child: InputDecorator(
+                      decoration: const InputDecoration(border: OutlineInputBorder()),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          hint: const Text('Preffered shift'),
+                          value: prefferedShiftValue,
+                          items: shifts.map((String shift) {
+                            return DropdownMenuItem(
+                              child: Text(
+                                shift.toString(),
+                                style: GoogleFonts.lexendDeca(
+                                  textStyle: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400, color: Colors.black),
+                                ),
                               ),
-                            ),
-                            value: shift,
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
-                          setState(() {
-                            prefferedShiftValue = value!;
-                          });
-                        },
+                              value: shift,
+                            );
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              prefferedShiftValue = value!;
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(
               height: 30.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  'Reliever available',
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.black),
+            Padding(
+              padding:  EdgeInsets.fromLTRB(18,0,8,0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Reliever available',
+                    style: GoogleFonts.lexendDeca(
+                      textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.black),
+                    ),
                   ),
-                ),
-                ToggleSwitch(
-                  cornerRadius: 20,
-                  animate: true,
-                  fontSize: 15,
-                  inactiveBgColor: Colors.grey.shade500,
-                  inactiveFgColor: Colors.white,
-                  minWidth: MediaQuery.of(context).size.width * 0.15,
-                  initialLabelIndex: indexValue,
-                  totalSwitches: 2,
-                  labels: const ['NO', 'YES'],
-                  customTextStyles: [
-                    GoogleFonts.montserrat(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                    ),
-                    GoogleFonts.montserrat(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                    ),
-                  ],
-                  onToggle: (index) {
-                    // print('switched to: $index');
-                    setState(() {
-                      indexValue = index!;
-                    });
-                  },
-                ),
-              ],
+                  ToggleSwitch(
+                    activeBgColor: [kRoyaleBlue],
+                    cornerRadius: 20,
+                    animate: true,
+                    fontSize: 15,
+                    inactiveBgColor: Colors.grey.shade500,
+                    inactiveFgColor: Colors.white,
+                    minWidth: MediaQuery.of(context).size.width * 0.15,
+                    initialLabelIndex: indexValue,
+                    totalSwitches: 2,
+                    labels: const ['NO', 'YES'],
+                    customTextStyles: [
+                      GoogleFonts.montserrat(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                      GoogleFonts.montserrat(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                    ],
+                    onToggle: (index) {
+                      // print('switched to: $index');
+                      setState(() {
+                        indexValue = index!;
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
               height: 30.0,

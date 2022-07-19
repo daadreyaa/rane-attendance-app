@@ -60,7 +60,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 isPresent ? 'Present' : 'Absent',
                 style: GoogleFonts.lexendDeca(
                   textStyle: const TextStyle(
-                    color: kBackgroundColor,
+                    color: Colors.white,
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -206,7 +206,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   '1 (10:00 AM - 5:00PM)',
                   style: GoogleFonts.lexendDeca(
                     textStyle: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 19,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
