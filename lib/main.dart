@@ -14,6 +14,7 @@ import 'package:rane_mobile_app/screens/dashboard_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:rane_mobile_app/screens/profile_screen.dart';
 import 'package:rane_mobile_app/screens/shift_change_screen.dart';
+import 'package:rane_mobile_app/screens/status_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         OnDuty.id: (context) => const OnDuty(),
         CalendarScreen.id: (context) => const CalendarScreen(),
         LoginScreen.id: (context) => const LoginScreen(),
+        StatusScreen.id: (context) => const StatusScreen(),
       },
     );
   }
