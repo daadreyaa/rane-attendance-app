@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:rane_mobile_app/providers/user_biometric.dart';
 import 'package:rane_mobile_app/screens/home_screen.dart';
+import 'package:rane_mobile_app/utils/apiCalls.dart';
+import 'package:rane_mobile_app/utils/data.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -206,8 +210,33 @@ class _LoginScreenState extends State<LoginScreen> {
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                                 minimumSize: const Size(180, 50),
                               ),
-                              onPressed: () {
-                                Navigator.pushNamed(context, HomeScreen.id);
+                              onPressed: () async {
+                                var result = await ApiCalls.login(_username.text.trim(), _password.text.trim());
+                                print(result);
+                                if (result != null) {
+                                  String mobileNumber = result['mobile'];
+                                  String userBiometric = result['userBiometric'];
+
+                                  context.read<UserBiometric>().updateUserBiometric(userBiometric);
+                                  Data.setUserBiometric(userBiometric);
+                                  // send otp and verify
+
+                                  Navigator.pushNamed(context, HomeScreen.id);
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: const Text('Invalid Credentials'),
+                                      action: SnackBarAction(
+                                        label: 'Reset',
+                                        onPressed: () {
+                                          // Some code to undo the change.
+                                          _username.text = '';
+                                          _password.text = '';
+                                        },
+                                      ),
+                                    ),
+                                  );
+                                }
                               },
                               child: Text(
                                 'Login',

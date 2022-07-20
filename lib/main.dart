@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rane_mobile_app/providers/user_biometric.dart';
 import 'package:rane_mobile_app/screens/attendance_screen.dart';
 import 'package:rane_mobile_app/screens/calendar_screen.dart';
 import 'package:rane_mobile_app/screens/forgot_punch.dart';
@@ -18,7 +20,7 @@ import 'package:rane_mobile_app/screens/status_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [ChangeNotifierProvider(create: (_) => UserBiometric())], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -49,8 +51,7 @@ class MyApp extends StatelessWidget {
         DashBoardPage.id: (context) => const DashBoardPage(),
         ProfilePage.id: (context) => const ProfilePage(),
         OnDuty.id: (context) => const OnDuty(),
-        Calendar.id: (context) =>  Calendar(),
-        
+        Calendar.id: (context) => Calendar(),
         LoginScreen.id: (context) => const LoginScreen(),
         StatusScreen.id: (context) => const StatusScreen(),
       },

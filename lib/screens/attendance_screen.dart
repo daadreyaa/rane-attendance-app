@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
 import 'package:horizontal_center_date_picker/horizontal_date_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:rane_mobile_app/components/constants.dart';
+import 'package:rane_mobile_app/providers/user_biometric.dart';
+import 'package:rane_mobile_app/utils/apiCalls.dart';
+import 'package:rane_mobile_app/utils/data.dart';
 
 class AttendanceScreen extends StatefulWidget {
   const AttendanceScreen({Key? key}) : super(key: key);
@@ -17,10 +22,14 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   final DatePickerController _datePickerController = DatePickerController();
 
   DateTime now = DateTime.now();
-  late DateTime startDate = now.subtract(const Duration(days: 14));
+  late DateTime startDate = now.subtract(const Duration(days: 90));
   late DateTime endDate = now;
 
-  bool isPresent = true;
+  DateFormat formatter = DateFormat('dd-MM-yyyy');
+
+  bool isPresent = false;
+  String inTime = '';
+  String outTime = '';
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +59,17 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               datePickerController: _datePickerController,
               onValueSelected: (date) {
                 print('selected = ${date.toIso8601String()}');
+                // dynamic result = ApiCalls.getAttendance(formatter.format(date), Data.userBiometric);
+                // print('result' + result.toString());
+                // if (result != null) {
+                //   String inTime = result['inTime'];
+                //   String outTime = result['outTime'];
+                //   var dateTime = DateTime.parse(inTime);
+                //   print('inTime' + inTime);
+                // } else {
+                //   isPresent = false;
+                // }
+                // setState(() {});
               },
             ),
           ),
@@ -77,138 +97,145 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
           const SizedBox(
             height: 40.0,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
+          Visibility(
+            visible: isPresent,
+            child: Column(
               children: [
-                Text(
-                  'In Time'.toString().padRight(17),
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w900,
-                    ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'In Time'.toString().padRight(17),
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
+                      // const SizedBox(
+                      //   width: 20.0,
+                      //   child: Center(
+                      //     child: Text(':'),
+                      //   ),
+                      // ),
+                      Text(
+                        inTime,
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                // const SizedBox(
-                //   width: 20.0,
-                //   child: Center(
-                //     child: Text(':'),
-                //   ),
-                // ),
-                Text(
-                  '10:00 AM',
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.normal,
-                    ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Out Time'.toString().padRight(16),
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
+                      // const SizedBox(
+                      //   width: 20.0,
+                      //   child: Center(
+                      //     child: Text(':'),
+                      //   ),
+                      // ),
+                      Text(
+                        outTime,
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Out Time'.toString().padRight(16),
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w900,
-                    ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Total Hours'.toString().padRight(15),
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
+                      // const SizedBox(
+                      //   width: 20.0,
+                      //   child: Center(
+                      //     child: Text(':'),
+                      //   ),
+                      // ),
+                      Text(
+                        '7 hours',
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                // const SizedBox(
-                //   width: 20.0,
-                //   child: Center(
-                //     child: Text(':'),
-                //   ),
-                // ),
-                Text(
-                  '5:00 PM',
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
+                const SizedBox(
+                  height: 10.0,
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Total Hours'.toString().padRight(15),
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ),
-                // const SizedBox(
-                //   width: 20.0,
-                //   child: Center(
-                //     child: Text(':'),
-                //   ),
-                // ),
-                Text(
-                  '7 hours',
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Shift'.toString().padRight(20),
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ),
-                // const SizedBox(
-                //   width: 20.0,
-                //   child: Center(
-                //     child: Text(':'),
-                //   ),
-                // ),
-                Text(
-                  '1 (10:00 AM - 5:00PM)',
-                  style: GoogleFonts.lexendDeca(
-                    textStyle: const TextStyle(
-                      fontSize: 19,
-                      fontWeight: FontWeight.normal,
-                    ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Shift'.toString().padRight(20),
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
+                      // const SizedBox(
+                      //   width: 20.0,
+                      //   child: Center(
+                      //     child: Text(':'),
+                      //   ),
+                      // ),
+                      Text(
+                        '1 (10:00 AM - 5:00PM)',
+                        style: GoogleFonts.lexendDeca(
+                          textStyle: const TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
