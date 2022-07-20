@@ -20,5 +20,10 @@ public final class GeneratedPluginRegistrant {
     } catch(Exception e) {
       Log.e(TAG, "Error registering plugin path_provider_android, io.flutter.plugins.pathprovider.PathProviderPlugin", e);
     }
+    try {
+      flutterEngine.getPlugins().add(new com.shounakmulay.telephony.TelephonyPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin telephony, com.shounakmulay.telephony.TelephonyPlugin", e);
+    }
   }
 }

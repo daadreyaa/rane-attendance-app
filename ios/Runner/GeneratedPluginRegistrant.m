@@ -12,10 +12,17 @@
 @import path_provider_ios;
 #endif
 
+#if __has_include(<telephony/TelephonyPlugin.h>)
+#import <telephony/TelephonyPlugin.h>
+#else
+@import telephony;
+#endif
+
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
+  [TelephonyPlugin registerWithRegistrar:[registry registrarForPlugin:@"TelephonyPlugin"]];
 }
 
 @end

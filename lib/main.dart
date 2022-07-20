@@ -8,6 +8,7 @@ import 'package:rane_mobile_app/screens/leave_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen.dart';
 import 'package:rane_mobile_app/screens/login_screen_old.dart';
 import 'package:rane_mobile_app/screens/on_duty_screen.dart';
+import 'package:rane_mobile_app/screens/otp_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_details_screen.dart';
 import 'package:rane_mobile_app/screens/overtime_screen.dart';
 import 'package:rane_mobile_app/screens/dashboard_screen.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         
         LoginScreen.id: (context) => const LoginScreen(),
         StatusScreen.id: (context) => const StatusScreen(),
+        OTPPage.id: (context) => const OTPPage(),
       },
     );
   }
