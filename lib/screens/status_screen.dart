@@ -27,7 +27,36 @@ class _StatusScreenState extends State<StatusScreen> {
         centerTitle: true,
       ),
       body: Column(
-children: [],
+        crossAxisAlignment: CrossAxisAlignment.start,
+children: [
+  SizedBox(height:50),
+  
+  Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text("Leave Applied:",style: kPrimaryText,),
+      Container(
+        color:kRoyaleBlue,
+        width: 130,
+        height:35,
+        child: Center(child: Text("Approved",style: kPrimaryWhiteText,)),
+      ),
+    ],
+  ),
+  SizedBox(height:50),
+  Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text("Overtime Applied :",style: kPrimaryText,),
+      Container(
+        color:kRoyaleBlue,
+        width: 130,
+        height:35,
+        child: Center(child: Text("Approved",style: kPrimaryWhiteText,)),
+      ),
+    ],
+  ),
+],
       ),
     );
   }

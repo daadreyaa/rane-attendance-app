@@ -87,8 +87,8 @@ class _CalendarState extends State<Calendar> {
                 CalendarBuilders(markerBuilder: ((context, day, events) {
               print("day is $day");
               return Container(
-                width: 10,
-                height: 10,
+                width: 15,
+                height: 15,
                 decoration: BoxDecoration(
                   color: day == DateTime.parse('2022-07-14 00:00:00.000Z')
                       ? Colors.green
