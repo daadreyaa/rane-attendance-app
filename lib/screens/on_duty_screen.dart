@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:rane_mobile_app/components/constants.dart';
 import 'package:rane_mobile_app/components/rounded_button.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class OnDuty extends StatefulWidget {
   const OnDuty({Key? key}) : super(key: key);
@@ -20,11 +21,16 @@ class _OnDutyState extends State<OnDuty> {
 
   DateFormat formatter = DateFormat('dd-MM-yyyy');
 
-  List<String> reasons = ['customer visit', 'supplier visit'];
+  List<String> odReasons = ['customer visit', 'supplier visit'];
+  List<String> permissionReasons = ['customer visit 1', 'supplier visit 1'];
+
+  late List<String> reasons = odReasons;
+
   String? reasonForOD;
 
   TimeOfDay? inTime = TimeOfDay.now();
   TimeOfDay? outTime = TimeOfDay.now();
+  int indexValue = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +47,28 @@ class _OnDutyState extends State<OnDuty> {
       ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 20,
+          ),
+          ToggleSwitch(
+            minWidth: MediaQuery.of(context).size.width * 0.3,
+            dividerColor: kRoyaleBlue,
+            activeBorders: [Border.all(color: kRoyaleBlue, width: 2)],
+            borderColor: const [kTertiaryColor],
+            borderWidth: 0,
+            activeBgColor: const [Colors.white],
+            activeFgColor: Colors.black,
+            inactiveBgColor: kTertiaryColor,
+            inactiveFgColor: Colors.blueGrey,
+            initialLabelIndex: indexValue,
+            totalSwitches: 2,
+            labels: const ['On duty ', 'Permission'],
+            onToggle: (index) {
+              indexValue = index!;
+              reasons = index == 0 ? odReasons : permissionReasons;
+              setState(() {});
+            },
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(38, 20, 38, 10),
             child: Row(
@@ -54,7 +82,8 @@ class _OnDutyState extends State<OnDuty> {
                   ),
                   child: Text(formatter.format(date!)),
                   onPressed: () async {
-                    DateTime? selectedDate = await DatePicker.showSimpleDatePicker(
+                    DateTime? selectedDate =
+                        await DatePicker.showSimpleDatePicker(
                       context,
                       initialDate: DateTime(now.year, now.month, now.day - 14),
                       firstDate: DateTime(now.year - 1),
@@ -74,7 +103,8 @@ class _OnDutyState extends State<OnDuty> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 38.0, vertical: 10.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 38.0, vertical: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -101,7 +131,8 @@ class _OnDutyState extends State<OnDuty> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 38.0, vertical: 10.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 38.0, vertical: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -152,7 +183,10 @@ class _OnDutyState extends State<OnDuty> {
                       child: Text(
                         reason.toString(),
                         style: GoogleFonts.lexendDeca(
-                          textStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400, color: Colors.black),
+                          textStyle: const TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black),
                         ),
                       ),
                       value: reason,

@@ -19,6 +19,8 @@ class _CalendarState extends State<Calendar> {
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
 
+  int option = 0;
+
   TextEditingController _eventController = TextEditingController();
 
   @override
@@ -40,12 +42,24 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-        selectedEvents[DateTime.parse('2022-07-09 05:30:00')] = [Event(title: "In time: 8:30 am Out time 10:30 pm")];
-    selectedEvents[DateTime.parse('2022-07-10 05:30:00')] = [Event(title: "In time: 9:30 am Out time 9:30 pm")];
-    selectedEvents[DateTime.parse('2022-07-11 05:30:00')] = [Event(title: "In time: 10:30 am Out time 8:30 pm")];
-    selectedEvents[DateTime.parse('2022-07-12 05:30:00')] = [Event(title: "In time: 8:30 am Out time 10:30 pm")];
-    selectedEvents[DateTime.parse('2022-07-13 05:30:00')] = [Event(title: "In time: 9:30 am Out time 9:30 pm")];
-    selectedEvents[DateTime.parse('2022-07-14 05:30:00')] = [Event(title: "In time: 10:30 am Out time 8:30 pm")];
+    selectedEvents[DateTime.parse('2022-07-09 05:30:00')] = [
+      Event(title: "In time: 8:30 am \nOut time 10:30 pm")
+    ];
+    selectedEvents[DateTime.parse('2022-07-10 05:30:00')] = [
+      Event(title: "In time: 9:30 am \nOut time 9:30 pm",)
+    ];
+    selectedEvents[DateTime.parse('2022-07-11 05:30:00')] = [
+      Event(title: "In time: 10:30 am \nOut time 8:30 pm"),
+    ];
+    selectedEvents[DateTime.parse('2022-07-12 05:30:00')] = [
+      Event(title: "In time: 8:30 am \nOut time 10:30 pm")
+    ];
+    selectedEvents[DateTime.parse('2022-07-13 05:30:00')] = [
+      Event(title: "In time: 9:30 am \nOut time 9:30 pm")
+    ];
+    selectedEvents[DateTime.parse('2022-07-14 05:30:00')] = [
+      Event(title: "In time: 10:30 am \nOut time 8:30 pm")
+    ];
 
     return Scaffold(
       backgroundColor: kBackgroundColor,
@@ -58,7 +72,6 @@ class _CalendarState extends State<Calendar> {
       body: Column(
         children: [
           TableCalendar(
-            
             focusedDay: selectedDay,
             firstDay: DateTime(now.year, now.month - 12),
             lastDay: now,
@@ -70,7 +83,22 @@ class _CalendarState extends State<Calendar> {
             },
             startingDayOfWeek: StartingDayOfWeek.sunday,
             daysOfWeekVisible: true,
-
+            calendarBuilders:
+                CalendarBuilders(markerBuilder: ((context, day, events) {
+              print("day is $day");
+              return Container(
+                width: 15,
+                height: 15,
+                decoration: BoxDecoration(
+                  color: day == DateTime.parse('2022-07-14 00:00:00.000Z')
+                      ? Colors.green
+                      : day == DateTime.parse('2022-07-15 00:00:00.000Z')
+                          ? Colors.yellow
+                          : Colors.red,
+                  shape: BoxShape.circle,
+                ),
+              );
+            })),
             //Day Changed
             onDaySelected: (DateTime selectDay, DateTime focusDay) {
               setState(() {
@@ -127,15 +155,16 @@ class _CalendarState extends State<Calendar> {
             (Event event) => ListTile(
               title: Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: Text(event.title
-                    //  "In time:  10:30 am\n\nOut time:  7:30 pm",style:kPrimaryText,
-                    ),
+                child: Center(
+                  child: Text(event.title,style: kPrimaryText
+                      //  "In time:  10:30 am\n\nOut time:  7:30 pm",style:kPrimaryText,
+                      ),
+                ),
               ),
             ),
           ),
         ],
       ),
-     
     );
   }
 }

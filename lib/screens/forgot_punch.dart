@@ -56,8 +56,8 @@ class _ForgotPunchState extends State<ForgotPunch> {
                       startDate = await DatePicker.showSimpleDatePicker(
                         context,
                         initialDate: startDate,
-                        firstDate: DateTime(now.year - 1),
-                        lastDate: DateTime(now.year + 1),
+                        firstDate: DateTime(now.year, now.month, now.day - 30),
+                        lastDate: now,
                         dateFormat: "dd-MMMM-yyyy",
                         locale: DateTimePickerLocale.en_us,
                         // looping: true,

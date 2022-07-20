@@ -5,6 +5,7 @@ import 'package:rane_mobile_app/providers/user_biometric.dart';
 import 'package:rane_mobile_app/screens/home_screen.dart';
 import 'package:rane_mobile_app/utils/apiCalls.dart';
 import 'package:rane_mobile_app/utils/data.dart';
+import 'package:rane_mobile_app/screens/otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
