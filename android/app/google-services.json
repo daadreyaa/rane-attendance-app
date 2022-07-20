@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606520193783",
+    "project_id": "rane-50430",
+    "storage_bucket": "rane-50430.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606520193783:android:e01c0d48f25fabf18259f2",
+        "android_client_info": {
+          "package_name": "com.example.rane_mobile_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606520193783-l0pdgdn6puqh8cd85l8nd4vb34kglri2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH6yx_YE1i8dNYfeV2LqizRNwcVCTC66s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606520193783-l0pdgdn6puqh8cd85l8nd4vb34kglri2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

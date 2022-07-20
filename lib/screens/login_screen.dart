@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rane_mobile_app/screens/home_screen.dart';
-import 'package:telephony/telephony.dart';
-
-import 'otp_screen.dart';
+import 'package:rane_mobile_app/screens/otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,28 +13,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-
-  final Telephony telephony = Telephony.instance;
   String username = '', password = '';
   final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
   bool isObscure = true;
-  _sendSMS() async{
-    telephony.sendSms(to: "917904594440", message: "Hello");
-  }
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('images/Shape1.png'), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage('images/Shape1.png'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -46,8 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(),
             SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.1),
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -66,10 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'RML- DHRM',
                         style: GoogleFonts.lexendDeca(
-                          textStyle: const TextStyle(
-                              fontSize: 30.0,
-                              color: Color(0xff175EAB),
-                              fontWeight: FontWeight.w800),
+                          textStyle: const TextStyle(fontSize: 30.0, color: Color(0xff175EAB), fontWeight: FontWeight.w800),
                         ),
                       ),
                     ),
@@ -86,10 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               "User-id",
                               style: GoogleFonts.lexendDeca(
-                                textStyle: const TextStyle(
-                                    fontSize: 20.0,
-                                    color: Color(0xff708090),
-                                    fontWeight: FontWeight.w600),
+                                textStyle: const TextStyle(fontSize: 20.0, color: Color(0xff708090), fontWeight: FontWeight.w600),
                               ),
                             ),
                           ),
@@ -104,8 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Row(
                               children: <Widget>[
                                 const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 10.0, horizontal: 15.0),
+                                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                                   child: Icon(
                                     Icons.person_outline,
                                     color: Colors.grey,
@@ -115,8 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: 30.0,
                                   width: 1.0,
                                   color: Colors.grey.withOpacity(0.5),
-                                  margin: const EdgeInsets.only(
-                                      left: 00.0, right: 10.0),
+                                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
                                 ),
                                 Expanded(
                                   child: TextField(
@@ -148,10 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               "Password",
                               style: GoogleFonts.lexendDeca(
-                                textStyle: const TextStyle(
-                                    fontSize: 20.0,
-                                    color: Color(0xff708090),
-                                    fontWeight: FontWeight.w600),
+                                textStyle: const TextStyle(fontSize: 20.0, color: Color(0xff708090), fontWeight: FontWeight.w600),
                               ),
                             ),
                           ),
@@ -169,8 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Row(
                               children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 10.0, horizontal: 15.0),
+                                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                                   child: InkWell(
                                     onTap: () {
                                       setState(() {
@@ -178,9 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       });
                                     },
                                     child: Icon(
-                                      isObscure
-                                          ? Icons.lock_open
-                                          : Icons.lock_outline,
+                                      isObscure ? Icons.lock_open : Icons.lock_outline,
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -189,8 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: 30.0,
                                   width: 1.0,
                                   color: Colors.grey.withOpacity(0.5),
-                                  margin: const EdgeInsets.only(
-                                      left: 00.0, right: 10.0),
+                                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
                                 ),
                                 Expanded(
                                   child: TextField(
@@ -214,12 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0, 4),
-                                    blurRadius: 5.0)
-                              ],
+                              boxShadow: const [BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)],
                               gradient: LinearGradient(
                                 begin: Alignment.bottomLeft,
                                 end: Alignment.topRight,
@@ -238,20 +204,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onPrimary: Colors.white,
                                 shadowColor: Colors.black12,
                                 elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(32.0)),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                                 minimumSize: const Size(180, 50),
                               ),
                               onPressed: () {
-                                // _sendSMS();
                                 Navigator.pushNamed(context, OTPPage.id);
                               },
                               child: Text(
                                 'Login',
                                 style: GoogleFonts.lexendDeca(
-                                  textStyle: const TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w800),
+                                  textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w800),
                                 ),
                               ),
                             ),
