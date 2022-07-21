@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiCalls {
-  static const _apiUrl = 'https://c173-171-78-184-81.in.ngrok.io';
+  static const _apiUrl = 'https://7505-2401-4900-1cd4-94fa-e907-c348-56bd-ef64.in.ngrok.io';
 
   static Future<dynamic> login(String userId, String password) async {
     Uri url = Uri.parse(_apiUrl + '/login');

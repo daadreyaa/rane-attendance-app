@@ -22,7 +22,17 @@ import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MultiProvider(providers: [ChangeNotifierProvider(create: (_) => UserBiometric())], child: const MyApp()));
+  await Firebase.initializeApp();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserBiometric(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
