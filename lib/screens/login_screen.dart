@@ -23,6 +23,38 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _password = TextEditingController();
 
   bool isObscure = true;
+  void showSnackBarText(String text) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(text),
+      ),
+    );
+  }
+  Future<void> verifyPhone(String number) async {
+    print(number);
+    print(number.runtimeType);
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: number,
+      
+      timeout: const Duration(seconds: 20),
+      verificationCompleted: (PhoneAuthCredential credential) {
+        showSnackBarText("Auth Completed!");
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        showSnackBarText("Auth Failed! $e");
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        Data.setVerID(verificationId);
+        showSnackBarText("OTP Sent!");
+        print('verificationId= $verificationId');
+        
+        
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        showSnackBarText("Timeout!");
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -214,6 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onPressed: () async {
                                 var result = await ApiCalls.login(_username.text.trim(), _password.text.trim());
+
                                 print(result);
                                 if (result != null) {
                                   String mobileNumber = result['mobile'];
@@ -223,9 +256,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Data.setUserBiometric(userBiometric);
                                   // send otp and verify
                                   print('mobile number $mobileNumber');
-
+                                  verifyPhone('+916374817430');
                                   Navigator.pushNamed(context, OTPPage.id);
-                                } else {
+                                }
+                                 else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: const Text('Invalid Credentials'),
