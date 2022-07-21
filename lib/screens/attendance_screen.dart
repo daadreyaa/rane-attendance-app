@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:horizontal_center_date_picker/datepicker_controller.dart';
 import 'package:horizontal_center_date_picker/horizontal_date_picker.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
 import 'package:rane_mobile_app/components/constants.dart';
 import 'package:rane_mobile_app/providers/user_biometric.dart';
@@ -25,11 +26,34 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   late DateTime startDate = now.subtract(const Duration(days: 90));
   late DateTime endDate = now;
 
-  DateFormat formatter = DateFormat('dd-MM-yyyy');
+  DateFormat formatter = DateFormat('yyyy-MM-dd');
 
   bool isPresent = false;
   String inTime = '';
   String outTime = '';
+  bool showLoading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ApiCalls.getAttendance(formatter.format(DateTime.now()), Data.userBiometric).then((value) {
+      print(value.runtimeType);
+      print(value.runtimeType == Null);
+      if (value.runtimeType != Null) {
+        inTime = value['inTime'];
+        outTime = value['outTime'];
+        isPresent = true;
+        print('value $value');
+      } else {
+        isPresent = false;
+        print('value runTimeType is null');
+      }
+      setState(() {
+        showLoading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,18 +83,45 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               datePickerController: _datePickerController,
               onValueSelected: (date) {
                 print('selected = ${date.toIso8601String()}');
-                // dynamic result = ApiCalls.getAttendance(formatter.format(date), Data.userBiometric);
+                setState(() {
+                  showLoading = true;
+                });
+                dynamic result = ApiCalls.getAttendance(formatter.format(date), Data.userBiometric).then(
+                  (value) {
+                    print(value.runtimeType);
+                    print(value.runtimeType == Null);
+                    if (value.runtimeType != Null) {
+                      inTime = value['inTime'];
+                      outTime = value['outTime'];
+                      isPresent = true;
+                      print('value $value');
+                    } else {
+                      isPresent = false;
+                      print('value runTimeType is null');
+                    }
+                    setState(() {
+                      showLoading = false;
+                    });
+                  },
+                );
                 // print('result' + result.toString());
-                // if (result != null) {
-                //   String inTime = result['inTime'];
-                //   String outTime = result['outTime'];
+                // if (result != Null) {
+                //   inTime = result['inTime'];
+                //   outTime = result['outTime'];
                 //   var dateTime = DateTime.parse(inTime);
                 //   print('inTime' + inTime);
                 // } else {
                 //   isPresent = false;
                 // }
-                // setState(() {});
+                setState(() {});
               },
+            ),
+          ),
+          const SizedBox(height: 20.0),
+          Visibility(
+            visible: showLoading,
+            child: const SizedBox(
+              child: Text('Loading ....'),
             ),
           ),
           const SizedBox(height: 20.0),

@@ -25,7 +25,7 @@ class ApiCalls {
     http.Response response = await http.get(url);
     if (response.statusCode == 200) {
       var decodedData = jsonDecode(response.body);
-      print('decodedData' + decodedData.toString());
+      print('called decodedData' + decodedData.toString());
       return decodedData['data'];
     }
     return null;
