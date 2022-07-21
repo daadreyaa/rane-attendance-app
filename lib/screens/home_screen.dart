@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         backgroundColor: kAppbarTextColor,
+        foregroundColor: Colors.black,
       ),
       body: Center(
         child: Column(

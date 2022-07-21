@@ -26,38 +26,116 @@ class _StatusScreenState extends State<StatusScreen> {
         backgroundColor: const Color(0xffe4e3e9),
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-  SizedBox(height:50),
-  
-  Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text("Leave Applied:",style: kPrimaryText,),
-      Container(
-        color:kRoyaleBlue,
-        width: 130,
-        height:35,
-        child: Center(child: Text("Approved",style: kPrimaryWhiteText,)),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height:50),
+        
+        StatusTable(title: 'Leave Status',),
+        StatusTable(title: 'On Duty Status',),
+        StatusTable(title: 'Shift Change Status',),
+        StatusTable(title: 'Overtime Status',),
+        StatusTable(title: 'Comp-Off Status',),
+        StatusTable(title: 'Forgot Punch Status',),
+        
+        
+      ],
+        ),
       ),
-    ],
-  ),
-  SizedBox(height:50),
-  Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text("Overtime Applied :",style: kPrimaryText,),
-      Container(
-        color:kRoyaleBlue,
-        width: 130,
-        height:35,
-        child: Center(child: Text("Approved",style: kPrimaryWhiteText,)),
-      ),
-    ],
-  ),
-],
-      ),
+    );
+  }
+}
+
+class StatusTable extends StatelessWidget {
+  const StatusTable({
+    Key? key,  required this.title,
+  }) : super(key: key);
+final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("$title:",style: kPrimaryText,), 
+        
+        Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: Container(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: DataTable(
+                sortColumnIndex: 3,
+                  columns: [
+                    DataColumn(
+                      label: Text('Date', style: kTableColumnText),
+                    ),
+                    DataColumn(
+                      label: Text('CL/PL', style: kTableColumnText),
+                    ),
+                    DataColumn(
+                      label: Text('No of days', style: kTableColumnText),
+                    ),
+                    DataColumn(
+                      label: Text('Status', style: kTableColumnText),
+                    ),
+                  ],
+                  rows: [
+                    DataRow(selected: true,
+                      cells: <DataCell>[
+                        DataCell(
+                          
+                          Text('12/06/2022', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('CL', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('2', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('Approved', style: kTableRowText),
+                        ),
+                      ],
+                    ),
+                    DataRow(
+                      cells: <DataCell>[
+                        DataCell(
+                          Text('PL', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('10', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('3', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('7', style: kTableRowText),
+                        ),
+                      ],
+                    ),
+                    DataRow(selected: true,
+                      cells: <DataCell>[
+                        DataCell(
+                          Text('CL', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('10', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('2', style: kTableRowText),
+                        ),
+                        DataCell(
+                          Text('8', style: kTableRowText),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+            ),
+          ),
+        ),
+          SizedBox(height: 50,)
+      ],
     );
   }
 }
