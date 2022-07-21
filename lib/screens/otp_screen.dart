@@ -189,9 +189,10 @@ class _OTPPageState extends State<OTPPage> {
                     duration: const Duration(milliseconds: 500),
                     child: MaterialButton(
                       elevation: 0,
-                      onPressed: _code.length < 4
+                      onPressed: _code.length < 6
                           ? () => {}
                           : () {
+                              Navigator.pushNamed(context, HomeScreen.id);
                               verify();
                             },
                       color: kRoyaleBlue,

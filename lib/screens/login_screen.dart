@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
       timeout: const Duration(seconds: 20),
       verificationCompleted: (PhoneAuthCredential credential) {
         showSnackBarText("Auth Completed!");
-      },
+      },  
       verificationFailed: (FirebaseAuthException e) {
         showSnackBarText("Auth Failed! $e");
       },

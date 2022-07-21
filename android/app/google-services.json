@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "606520193783",
-    "project_id": "rane-50430",
-    "storage_bucket": "rane-50430.appspot.com"
+    "project_number": "100900336030",
+    "project_id": "rane-750a8",
+    "storage_bucket": "rane-750a8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:606520193783:android:e01c0d48f25fabf18259f2",
+        "mobilesdk_app_id": "1:100900336030:android:4bdf5eb1143dba0b82e68f",
         "android_client_info": {
           "package_name": "com.example.rane_mobile_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "606520193783-l0pdgdn6puqh8cd85l8nd4vb34kglri2.apps.googleusercontent.com",
+          "client_id": "100900336030-1pmdfav9d2ho1r6eclhit7n72in6ul3o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rane_mobile_app",
+            "certificate_hash": "2ecc006054c5bf763ebbd83ca7d120942e256b6b"
+          }
+        },
+        {
+          "client_id": "100900336030-59ml8gf2465idqeun572c7qv56c5492r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBH6yx_YE1i8dNYfeV2LqizRNwcVCTC66s"
+          "current_key": "AIzaSyCFJJeocUz4iv0j-ofWEZXIXXbxiyePgiY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "606520193783-l0pdgdn6puqh8cd85l8nd4vb34kglri2.apps.googleusercontent.com",
+              "client_id": "100900336030-59ml8gf2465idqeun572c7qv56c5492r.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
