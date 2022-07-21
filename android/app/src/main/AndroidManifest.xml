@@ -5,7 +5,7 @@
     
     
    <application
-        android:label="rane_mobile_app"
+        android:label="DHRM"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
