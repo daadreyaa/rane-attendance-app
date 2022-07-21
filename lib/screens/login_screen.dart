@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -221,8 +222,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   context.read<UserBiometric>().updateUserBiometric(userBiometric);
                                   Data.setUserBiometric(userBiometric);
                                   // send otp and verify
+                                  print('mobile number $mobileNumber');
 
-                                  Navigator.pushNamed(context, HomeScreen.id);
+                                  Navigator.pushNamed(context, OTPPage.id);
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
