@@ -18,6 +18,12 @@
 @import firebase_core;
 #endif
 
+#if __has_include(<modal_progress_hud_nsn/ModalProgressHudNsnPlugin.h>)
+#import <modal_progress_hud_nsn/ModalProgressHudNsnPlugin.h>
+#else
+@import modal_progress_hud_nsn;
+#endif
+
 #if __has_include(<path_provider_ios/FLTPathProviderPlugin.h>)
 #import <path_provider_ios/FLTPathProviderPlugin.h>
 #else
@@ -35,6 +41,7 @@
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FLTFirebaseAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAuthPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
+  [ModalProgressHudNsnPlugin registerWithRegistrar:[registry registrarForPlugin:@"ModalProgressHudNsnPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [TelephonyPlugin registerWithRegistrar:[registry registrarForPlugin:@"TelephonyPlugin"]];
 }

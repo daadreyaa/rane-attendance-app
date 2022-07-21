@@ -30,16 +30,16 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
   Future<void> verifyPhone(String number) async {
     print(number);
     print(number.runtimeType);
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: number,
-      
       timeout: const Duration(seconds: 20),
       verificationCompleted: (PhoneAuthCredential credential) {
         showSnackBarText("Auth Completed!");
-      },  
+      },
       verificationFailed: (FirebaseAuthException e) {
         showSnackBarText("Auth Failed! $e");
       },
@@ -47,8 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
         Data.setVerID(verificationId);
         showSnackBarText("OTP Sent!");
         print('verificationId= $verificationId');
-        
-        
       },
       codeAutoRetrievalTimeout: (String verificationId) {
         showSnackBarText("Timeout!");
@@ -256,10 +254,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Data.setUserBiometric(userBiometric);
                                   // send otp and verify
                                   print('mobile number $mobileNumber');
-                                  verifyPhone('+916374817430');
+                                  // verifyPhone('+916374817430');
                                   Navigator.pushNamed(context, OTPPage.id);
-                                }
-                                 else {
+                                } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: const Text('Invalid Credentials'),
