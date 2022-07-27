@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rane_mobile_app/providers/user_biometric.dart';
 import 'package:rane_mobile_app/screens/attendance_screen.dart';
 import 'package:rane_mobile_app/screens/calendar_screen.dart';
+import 'package:rane_mobile_app/screens/enter_ngrok.dart';
 import 'package:rane_mobile_app/screens/forgot_punch.dart';
 import 'package:rane_mobile_app/screens/home_screen.dart';
 import 'package:rane_mobile_app/screens/comp_page.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      initialRoute: LoginScreen.id,
+      initialRoute: EnterNgrok.id,
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
         LoginPage.id: (context) => const LoginPage(),
         StatusScreen.id: (context) => const StatusScreen(),
         OTPPage.id: (context) => const OTPPage(),
+        EnterNgrok.id: (context) => const EnterNgrok(),
       },
     );
   }
