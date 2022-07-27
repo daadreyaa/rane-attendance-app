@@ -84,10 +84,10 @@ class _CalendarState extends State<Calendar> {
                 height: 15,
                 decoration: BoxDecoration(
                   color: day == DateTime.parse('2022-07-14 00:00:00.000Z')
-                      ? Colors.green
+                      ? Colors.red
                       : day == DateTime.parse('2022-07-15 00:00:00.000Z')
                           ? Colors.yellow
-                          : Colors.red,
+                          : Colors.green,
                   shape: BoxShape.circle,
                 ),
               );
