@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:rane_mobile_app/components/rounded_button.dart';
+import 'package:rane_mobile_app/utils/apiCalls.dart';
+import 'package:rane_mobile_app/utils/data.dart';
 
 import '../components/constants.dart';
 
@@ -20,12 +23,24 @@ class _ProfilePageState extends State<ProfilePage> {
   late TextEditingController textController5;
   late TextEditingController textController6;
   late TextEditingController textController7;
-  late TextEditingController emailAddressController;
+  late TextEditingController textController8;
+
+  String? fullname = '';
+  String? department = '';
+  String? empId = '';
+  String? doj = '';
+  String? dob = '';
+  String? designation = '';
+  String? email = '';
+  String? contactNumber = '';
+
+  bool showSpinner = true;
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    emailAddressController = TextEditingController();
     textController1 = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();
@@ -33,11 +48,33 @@ class _ProfilePageState extends State<ProfilePage> {
     textController5 = TextEditingController();
     textController6 = TextEditingController();
     textController7 = TextEditingController();
+    textController8 = TextEditingController();
+    getValues();
+  }
+
+  void getValues() async {
+    ApiCalls.getProfile(Data.userBiometric).then((profileData) {
+      print(profileData);
+      if (profileData != null) {
+        fullname = profileData['fullname'];
+        department = profileData['department'].toString();
+        empId = profileData['empid'].toString();
+        doj = profileData['doj'];
+        dob = profileData['birthdate'];
+        designation = profileData['designation'].toString();
+        contactNumber = profileData['contact_no'];
+        email = profileData['email'];
+        setState(() {});
+      } else {
+        setState(() {});
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         foregroundColor: Colors.black,
@@ -104,43 +141,49 @@ class _ProfilePageState extends State<ProfilePage> {
               textController1: textController1,
               enable: false,
               labelText: 'Name',
-              initValue: "Alexandra Daddario",
+              initValue: fullname.toString(),
             ),
             ProfileField(
               textController1: textController2,
               enable: false,
               labelText: 'Department',
-              initValue: "Sales",
+              initValue: department.toString(),
             ),
             ProfileField(
               textController1: textController3,
               enable: false,
               labelText: 'Emp id',
-              initValue: "12345678",
+              initValue: empId.toString(),
             ),
             ProfileField(
               textController1: textController4,
               enable: false,
               labelText: 'Date of joining',
-              initValue: "12/07/2021",
+              initValue: doj.toString(),
             ),
             ProfileField(
               textController1: textController5,
               enable: false,
               labelText: 'Date of birth',
-              initValue: "23/06/2002",
+              initValue: dob.toString(),
             ),
             ProfileField(
               textController1: textController6,
               enable: false,
               labelText: 'Designation',
-              initValue: "Team",
+              initValue: designation.toString(),
             ),
             ProfileField(
               textController1: textController7,
               enable: false,
-              labelText: 'Contact details',
-              initValue: "1234567890",
+              labelText: 'Email',
+              initValue: email.toString(),
+            ),
+            ProfileField(
+              textController1: textController8,
+              enable: false,
+              labelText: 'Contact Number',
+              initValue: contactNumber.toString(),
             ),
             // RoundedButton(
             //   title: "Save Changes",
