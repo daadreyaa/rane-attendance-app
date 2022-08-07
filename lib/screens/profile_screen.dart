@@ -57,13 +57,12 @@ class _ProfilePageState extends State<ProfilePage> {
       print(profileData);
       if (profileData != null) {
         fullname = profileData['fullname'];
-        department = profileData['department'].toString();
-        empId = profileData['empid'].toString();
+        department = profileData['dept'].toString();
+        empId = profileData['apln'].toString();
         doj = profileData['doj'];
         dob = profileData['birthdate'];
-        designation = profileData['designation'].toString();
-        contactNumber = profileData['contact_no'];
-        email = profileData['email'];
+        designation = profileData['desig'].toString();
+        contactNumber = profileData['mobile_no1'];
         setState(() {});
       } else {
         setState(() {});

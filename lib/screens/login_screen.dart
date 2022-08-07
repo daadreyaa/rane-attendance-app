@@ -245,10 +245,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPressed: () async {
                                 var result = await ApiCalls.login(_username.text.trim(), _password.text.trim());
 
+                                Data.setEmpId(_username.text.trim());
+
                                 print(result);
                                 if (result != null) {
-                                  String mobileNumber = result['mobile'];
-                                  String userBiometric = result['userBiometric'];
+                                  String mobileNumber = result['mobile_no1'];
+                                  String userBiometric = result['biometric_no'];
 
                                   context.read<UserBiometric>().updateUserBiometric(userBiometric);
                                   Data.setUserBiometric(userBiometric);

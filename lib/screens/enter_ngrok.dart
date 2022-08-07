@@ -60,7 +60,7 @@ class _EnterNgrokState extends State<EnterNgrok> {
             title: 'GO',
             color: Colors.lightBlueAccent,
             onPressed: () {
-              ApiCalls.setApiUrl(link);
+              // ApiCalls.setApiUrl(link);
               Navigator.pushNamed(context, LoginScreen.id);
             },
           ),
