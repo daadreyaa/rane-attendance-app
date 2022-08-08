@@ -3,6 +3,8 @@ import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rane_mobile_app/components/rounded_button.dart';
+import 'package:rane_mobile_app/utils/apiCalls.dart';
+import 'package:rane_mobile_app/utils/data.dart';
 
 import '../components/constants.dart';
 
@@ -153,7 +155,27 @@ class _ForgotPunchState extends State<ForgotPunch> {
                 },
               ),
             ),
-            RoundedButton(title: 'Apply', color: kRoyaleBlue, onPressed: () {}),
+            RoundedButton(
+              title: 'Apply',
+              color: kRoyaleBlue,
+              onPressed: () {
+                ApiCalls.forgotPunch(Data.getEmpId(), formatter.format(startDate!).replaceAll('-', ''), inTime!.format(context), outTime!.format(context), reason.toString(), formatter.format(now)).then((value) {
+                  if (value) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Applied'),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Failed'),
+                      ),
+                    );
+                  }
+                });
+              },
+            ),
           ],
         ),
       ),
