@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rane_mobile_app/components/constants.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 
 class StatusScreen extends StatefulWidget {
   const StatusScreen({ Key? key }) : super(key: key);
@@ -11,6 +13,9 @@ class StatusScreen extends StatefulWidget {
 }
 
 class _StatusScreenState extends State<StatusScreen> {
+  DateTime now = DateTime.now();
+  late DateTime? cDate = now;
+  DateFormat formatter = DateFormat('dd-MM-yyyy');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +35,40 @@ class _StatusScreenState extends State<StatusScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height:50),
+        SizedBox(height:25),
+        
+        Center(
+          child: SizedBox(
+            width: 150.0,
+            height: 50.0,
+                          child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(primary: kRoyaleBlue, elevation: 10),
+                          
+                          child: Text(formatter.format(cDate!)),
+                          onPressed: () async {
+                            var date = await DatePicker.showSimpleDatePicker(
+                              context,
+                              initialDate: cDate,
+                              firstDate: DateTime(now.year),
+                              lastDate: DateTime(now.year + 1),
+                              dateFormat: "dd-MMMM-yyyy",
+                              locale: DateTimePickerLocale.en_us,
+                              // looping: true,
+                            );
+                            if (date != null) {
+                              setState(() {
+                                cDate = date;
+                              });
+                            }
+                          },
+                        ),
+          ),
+        ),
+        // SizedBox(height:25),
+        // Text('WSA- Waiting for Supervisor Approval'),
+        // Text('WFHA- Waiting for FH Approval'),
+
+        SizedBox(height:25),
         
         StatusTable(title: 'Leave Status',),
         StatusTable(title: 'On Duty Status',),
@@ -100,32 +138,32 @@ final String title;
                     DataRow(
                       cells: <DataCell>[
                         DataCell(
-                          Text('PL', style: kTableRowText),
+                          Text('11/05/2022', style: kTableRowText),
                         ),
                         DataCell(
-                          Text('10', style: kTableRowText),
+                          Text('PL', style: kTableRowText),
                         ),
                         DataCell(
                           Text('3', style: kTableRowText),
                         ),
                         DataCell(
-                          Text('7', style: kTableRowText),
+                          Text('WFHA', style: kTableRowText),
                         ),
                       ],
                     ),
                     DataRow(selected: true,
                       cells: <DataCell>[
                         DataCell(
-                          Text('CL', style: kTableRowText),
+                          Text('23/06/2022', style: kTableRowText),
                         ),
                         DataCell(
-                          Text('10', style: kTableRowText),
+                          Text('PL', style: kTableRowText),
                         ),
                         DataCell(
                           Text('2', style: kTableRowText),
                         ),
                         DataCell(
-                          Text('8', style: kTableRowText),
+                          Text('WSA', style: kTableRowText),
                         ),
                       ],
                     ),
