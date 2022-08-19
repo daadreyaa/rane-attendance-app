@@ -193,10 +193,9 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
 }
 
 class ConfirmationModal extends StatelessWidget {
-  ConfirmationModal({required this.otTime});
+  const ConfirmationModal({required this.otTime});
 
   final String otTime;
-
   @override
   Widget build(BuildContext context) {
     String machineName = '';
@@ -243,7 +242,8 @@ class ConfirmationModal extends StatelessWidget {
                   textStyle: const TextStyle(fontSize: 14.0),
                 ),
                 onChanged: (newText) {
-                  machineName = newText;
+                  // machineName = newText;
+                  Data.setMachineName(newText);
                 },
               ),
               const SizedBox(
@@ -275,7 +275,8 @@ class ConfirmationModal extends StatelessWidget {
                   textStyle: const TextStyle(fontSize: 14.0),
                 ),
                 onChanged: (newText) {
-                  description = newText;
+                  // description = newText;
+                  Data.setDescription(newText);
                 },
               ),
               const SizedBox(
@@ -296,8 +297,8 @@ class ConfirmationModal extends StatelessWidget {
                   backgroundColor: kRoyaleBlue,
                 ),
                 onPressed: () {
-                  if (machineName != '' && description != '') {
-                    ApiCalls.otApply(Data.getEmpId(), machineName, description, Data.getDate(), otTime.split(':')[0]);
+                  if (Data.getMachineName() != '' && Data.getDescription() != '') {
+                    ApiCalls.otApply(Data.getEmpId(), Data.getMachineName(), Data.getDescription(), Data.getDate(), otTime.split(':')[0]);
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(

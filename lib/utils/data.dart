@@ -7,6 +7,10 @@ class Data {
 
   static late String _date;
 
+  static String _machineName = '';
+
+  static String _description = '';
+
   static String get userBiometric => _userBiometric;
 
   static setUserBiometric(userBiometric) => _userBiometric = userBiometric;
@@ -22,4 +26,12 @@ class Data {
   static void setDate(date) => _date = date;
 
   static String getDate() => _date;
+
+  static void setMachineName(machineName) => _machineName = machineName;
+
+  static String getMachineName() => _machineName;
+
+  static void setDescription(description) => _description = description;
+
+  static String getDescription() => _description;
 }
