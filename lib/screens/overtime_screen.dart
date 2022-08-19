@@ -1,9 +1,12 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:rane_mobile_app/components/constants.dart';
 import 'package:rane_mobile_app/screens/overtime_details_screen.dart';
+import 'package:rane_mobile_app/utils/apiCalls.dart';
+import 'package:rane_mobile_app/utils/data.dart';
 
 class OvertimeScreen extends StatefulWidget {
   const OvertimeScreen({Key? key}) : super(key: key);
@@ -17,6 +20,25 @@ class OvertimeScreen extends StatefulWidget {
 class _OvertimeScreenState extends State<OvertimeScreen> {
   DateTime? selectedDate = DateTime.now();
   DateFormat formatter = DateFormat('MMMM - yyyy');
+  DateFormat backendFormat = DateFormat('yyyy/MM');
+
+  List<String> otDatesList = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    buildList(backendFormat.format(selectedDate!));
+  }
+
+  void buildList(String month) async {
+    print(month);
+    ApiCalls.getOTDates(Data.getEmpId(), month).then((dates) => {
+          for (dynamic date in dates) {otDatesList.add(date['dates'])},
+          setState(() {}),
+          print(otDatesList)
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +74,9 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
                   if (date != null) {
                     setState(() {
                       selectedDate = date;
+                      otDatesList = [];
                     });
+                    buildList(backendFormat.format(selectedDate!));
                   }
                 });
               },
@@ -88,11 +112,14 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: otDatesList.length,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
-                        onTap: () => Navigator.pushNamed(context, OvertimeDetailsScreen.id),
+                        onTap: () {
+                          Data.setDate(otDatesList[index]);
+                          Navigator.pushNamed(context, OvertimeDetailsScreen.id);
+                        },
                         child: Card(
                           elevation: 8.0,
                           shape: RoundedRectangleBorder(
@@ -102,7 +129,7 @@ class _OvertimeScreenState extends State<OvertimeScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: ListTile(
                               title: Text(
-                                'date',
+                                otDatesList[index],
                                 style: GoogleFonts.lexendDeca(
                                   textStyle: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
                                 ),

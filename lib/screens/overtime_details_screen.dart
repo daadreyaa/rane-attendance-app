@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rane_mobile_app/components/constants.dart';
 import 'package:rane_mobile_app/components/rounded_button.dart';
+import 'package:rane_mobile_app/utils/apiCalls.dart';
+import 'package:rane_mobile_app/utils/data.dart';
 
 class OvertimeDetailsScreen extends StatefulWidget {
   const OvertimeDetailsScreen({Key? key}) : super(key: key);
@@ -13,6 +15,29 @@ class OvertimeDetailsScreen extends StatefulWidget {
 }
 
 class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
+  String inTime = '';
+  String outTime = '';
+  String shift = '';
+  String otTime = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getOTDetails();
+  }
+
+  void getOTDetails() async {
+    ApiCalls.getOTDetails(Data.getDate(), Data.getEmpId()).then((otDetails) {
+      setState(() {
+        inTime = otDetails['in_time'];
+        outTime = otDetails['out_time'];
+        shift = otDetails['Shift'].toString();
+        otTime = otDetails['Overtime'];
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +119,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '10:00 AM',
+                      inTime,
                       style: GoogleFonts.lexendDeca(
                         textStyle: const TextStyle(
                           fontSize: 20.0,
@@ -106,7 +131,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
                       height: 20.0,
                     ),
                     Text(
-                      '10:00 PM',
+                      outTime,
                       style: GoogleFonts.lexendDeca(
                         textStyle: const TextStyle(
                           fontSize: 20.0,
@@ -118,7 +143,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
                       height: 20.0,
                     ),
                     Text(
-                      '1 (10:00 AM - 10:00 PM)',
+                      shift,
                       style: GoogleFonts.lexendDeca(
                         textStyle: const TextStyle(
                           fontSize: 20.0,
@@ -130,7 +155,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
                       height: 20.0,
                     ),
                     Text(
-                      '2 hours',
+                      otTime,
                       style: GoogleFonts.lexendDeca(
                         textStyle: const TextStyle(
                           fontSize: 20.0,
@@ -153,7 +178,7 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
                   context: context,
                   builder: (context) {
                     return Container(
-                      child: ConfirmationModal(),
+                      child: ConfirmationModal(otTime: otTime),
                     );
                   },
                 );
@@ -168,6 +193,10 @@ class _OvertimeDetailsScreenState extends State<OvertimeDetailsScreen> {
 }
 
 class ConfirmationModal extends StatelessWidget {
+  ConfirmationModal({required this.otTime});
+
+  final String otTime;
+
   @override
   Widget build(BuildContext context) {
     String machineName = '';
@@ -268,7 +297,13 @@ class ConfirmationModal extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (machineName != '' && description != '') {
+                    ApiCalls.otApply(Data.getEmpId(), machineName, description, Data.getDate(), otTime.split(':')[0]);
                     Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Over Time Applied'),
+                      ),
+                    );
                   }
                 },
               ),

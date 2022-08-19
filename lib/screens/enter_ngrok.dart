@@ -25,7 +25,7 @@ class _EnterNgrokState extends State<EnterNgrok> {
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'Machine Name',
+              'Tunneling URL',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: kRoyaleBlue,
@@ -60,7 +60,7 @@ class _EnterNgrokState extends State<EnterNgrok> {
             title: 'GO',
             color: Colors.lightBlueAccent,
             onPressed: () {
-              // ApiCalls.setApiUrl(link);
+              ApiCalls.setApiUrl(link);
               Navigator.pushNamed(context, LoginScreen.id);
             },
           ),

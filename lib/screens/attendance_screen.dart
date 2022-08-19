@@ -37,25 +37,16 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   String total_hours = "0";
   String shift = '';
 
-  
-  
-
   @override
   void initState() {
-  
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => getValues(DateTime.now(),Data.getEmpId()));
-    setState(() {
-      
-    });
+    WidgetsBinding.instance!.addPostFrameCallback((_) => getValues(DateTime.now(), Data.getEmpId()));
+    setState(() {});
     // getValues(DateTime.now(),Data.getEmpId());
-    
   }
 
-
   void getValues(DateTime dt, String id) async {
-    ApiCalls.Attendance(formatter.format(dt), id)
-        .then((value) {
+    ApiCalls.getAttendance(formatter.format(dt), id).then((value) {
       print("value: " + value.toString());
 
       if (value != {}) {
@@ -106,7 +97,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 setState(() {
                   showLoading = true;
                 });
-                getValues(date,Data.getEmpId());
+                getValues(date, Data.getEmpId());
                 // dynamic result = ApiCalls.Attendance(
                 //         formatter.format(DateTime.now()), Data.getEmpId())
                 //     .then((value) {

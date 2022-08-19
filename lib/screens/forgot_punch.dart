@@ -19,10 +19,10 @@ class ForgotPunch extends StatefulWidget {
 
 class _ForgotPunchState extends State<ForgotPunch> {
   DateTime now = DateTime.now();
-  late DateTime? startDate = now;
-  late DateTime? endDate = now.add(const Duration(days: 1));
+  late DateTime? selectedDate = now;
 
   DateFormat formatter = DateFormat('dd-MM-yyyy');
+  DateFormat backendFormat = DateFormat('yyyy-MM-dd');
 
   TimeOfDay? inTime = TimeOfDay.now();
   TimeOfDay? outTime = TimeOfDay.now();
@@ -53,18 +53,18 @@ class _ForgotPunchState extends State<ForgotPunch> {
                       primary: kRoyaleBlue,
                       fixedSize: const Size(120, 30),
                     ),
-                    child: Text(formatter.format(startDate!)),
+                    child: Text(formatter.format(selectedDate!)),
                     onPressed: () async {
-                      startDate = await DatePicker.showSimpleDatePicker(
+                      selectedDate = await DatePicker.showSimpleDatePicker(
                         context,
-                        initialDate: startDate,
+                        initialDate: selectedDate,
                         firstDate: DateTime(now.year, now.month, now.day - 30),
                         lastDate: now,
                         dateFormat: "dd-MMMM-yyyy",
                         locale: DateTimePickerLocale.en_us,
                         // looping: true,
                       );
-                      if (startDate != null) setState(() {});
+                      if (selectedDate != null) setState(() {});
                     },
                   ),
                 ],
@@ -159,10 +159,29 @@ class _ForgotPunchState extends State<ForgotPunch> {
               title: 'Apply',
               color: kRoyaleBlue,
               onPressed: () {
-                String intime_string = inTime!.hour.toString()+":"+inTime!.minute.toString()+":00";
-                 String outtime_string = outTime!.hour.toString()+":"+outTime!.minute.toString()+":00";
-                print("time is  "+intime_string);
-               
+                // String inTimeString = inTime!.hour.toString() + ":" + inTime!.minute.toString() + ":00";
+                // String outTimeString = outTime!.hour.toString() + ":" + outTime!.minute.toString() + ":00";
+                String formattedInTime = "${inTime!.hour.toString().padLeft(2, '0')}:${inTime!.minute.toString().padLeft(2, '0')}";
+                String formattedOutTime = "${outTime!.hour.toString().padLeft(2, '0')}:${outTime!.minute.toString().padLeft(2, '0')}";
+
+                // print(backendFormat.format(selectedDate!));
+                ApiCalls.forgotPunch(Data.getEmpId(), backendFormat.format(selectedDate!), formattedInTime, formattedOutTime, reason ?? '').then((value) {
+                  if (value) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Applied'),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Failed'),
+                      ),
+                    );
+                  }
+                });
+                // ApiCalls.forgotPunch(Data.getEmpId(), backendFormat.format(selectedDate!), "10:00", "20:00", 'reason');
+
                 // ApiCalls.forgotPunch(Data.getEmpId(),startDate.toString(),intime_string,outtime_string,reason.toString(),Data.getEmpId());
                 // ApiCalls.forgotPunch(Data.getEmpId(), formatter.format(startDate!).replaceAll('-', ''), inTime!.format(context), outTime!.format(context), reason.toString(), formatter.format(now)).then((value) {
                 //   if (value) {

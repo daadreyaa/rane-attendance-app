@@ -1,11 +1,11 @@
-import 'package:rane_mobile_app/providers/user_biometric.dart';
-
 class Data {
   static String _userBiometric = '';
 
   static late String _verID;
 
   static late String _empId;
+
+  static late String _date;
 
   static String get userBiometric => _userBiometric;
 
@@ -18,4 +18,8 @@ class Data {
   static void setEmpId(empId) => _empId = empId;
 
   static String getEmpId() => _empId;
+
+  static void setDate(date) => _date = date;
+
+  static String getDate() => _date;
 }
