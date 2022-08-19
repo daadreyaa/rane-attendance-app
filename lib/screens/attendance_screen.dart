@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,18 +34,36 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   String inTime = '';
   String outTime = '';
   bool showLoading = true;
+  String total_hours = "0";
+  String shift = '';
+
+  
+  
 
   @override
   void initState() {
-    // TODO: implement initState
+  
     super.initState();
-    ApiCalls.getAttendance(formatter.format(DateTime.now()), Data.userBiometric).then((value) {
-      print(value.runtimeType);
-      print(value.runtimeType == Null);
-      if (value.runtimeType != Null) {
-        inTime = value['inTime'];
-        outTime = value['outTime'];
+    WidgetsBinding.instance.addPostFrameCallback((_) => getValues(DateTime.now(),Data.getEmpId()));
+    setState(() {
+      
+    });
+    // getValues(DateTime.now(),Data.getEmpId());
+    
+  }
+
+
+  void getValues(DateTime dt, String id) async {
+    ApiCalls.Attendance(formatter.format(dt), id)
+        .then((value) {
+      print("value: " + value.toString());
+
+      if (value != {}) {
+        inTime = value['In_Time'];
+        outTime = value['Out_Time'];
         isPresent = true;
+        total_hours = value["Total_Hours"];
+        shift = value["Shift"];
         print('value $value');
       } else {
         isPresent = false;
@@ -86,24 +106,28 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 setState(() {
                   showLoading = true;
                 });
-                dynamic result = ApiCalls.getAttendance(formatter.format(date), Data.userBiometric).then(
-                  (value) {
-                    print(value.runtimeType);
-                    print(value.runtimeType == Null);
-                    if (value.runtimeType != Null) {
-                      inTime = value['inTime'];
-                      outTime = value['outTime'];
-                      isPresent = true;
-                      print('value $value');
-                    } else {
-                      isPresent = false;
-                      print('value runTimeType is null');
-                    }
-                    setState(() {
-                      showLoading = false;
-                    });
-                  },
-                );
+                getValues(date,Data.getEmpId());
+                // dynamic result = ApiCalls.Attendance(
+                //         formatter.format(DateTime.now()), Data.getEmpId())
+                //     .then((value) {
+                //   // print(value.runtimeType);
+                //   // print(value.runtimeType == Null);
+                //   print("value" + value);
+                //   if (value != Null) {
+                //     inTime = value['In_Time'];
+                //     outTime = value['Out_Time'];
+                //     isPresent = true;
+                //     total_hours = value["Total_hours"];
+                //     print('value $value');
+                //   } else {
+                //     isPresent = false;
+                //     print('value runTimeType is null');
+                //   }
+                //   setState(() {
+                //     showLoading = false;
+                //   });
+                // });
+
                 // print('result' + result.toString());
                 // if (result != Null) {
                 //   inTime = result['inTime'];
@@ -113,7 +137,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 // } else {
                 //   isPresent = false;
                 // }
-                setState(() {});
+                // setState(() {});
               },
             ),
           ),
@@ -243,7 +267,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       //   ),
                       // ),
                       Text(
-                        '7 hours',
+                        '$total_hours',
                         style: GoogleFonts.lexendDeca(
                           textStyle: const TextStyle(
                             fontSize: 20.0,
@@ -278,7 +302,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       //   ),
                       // ),
                       Text(
-                        '1 (10:00 AM - 5:00PM)',
+                        '$shift ($inTime - $outTime)',
                         style: GoogleFonts.lexendDeca(
                           textStyle: const TextStyle(
                             fontSize: 19,

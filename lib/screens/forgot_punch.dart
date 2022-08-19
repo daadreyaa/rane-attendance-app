@@ -159,21 +159,26 @@ class _ForgotPunchState extends State<ForgotPunch> {
               title: 'Apply',
               color: kRoyaleBlue,
               onPressed: () {
-                ApiCalls.forgotPunch(Data.getEmpId(), formatter.format(startDate!).replaceAll('-', ''), inTime!.format(context), outTime!.format(context), reason.toString(), formatter.format(now)).then((value) {
-                  if (value) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Applied'),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Failed'),
-                      ),
-                    );
-                  }
-                });
+                String intime_string = inTime!.hour.toString()+":"+inTime!.minute.toString()+":00";
+                 String outtime_string = outTime!.hour.toString()+":"+outTime!.minute.toString()+":00";
+                print("time is  "+intime_string);
+               
+                // ApiCalls.forgotPunch(Data.getEmpId(),startDate.toString(),intime_string,outtime_string,reason.toString(),Data.getEmpId());
+                // ApiCalls.forgotPunch(Data.getEmpId(), formatter.format(startDate!).replaceAll('-', ''), inTime!.format(context), outTime!.format(context), reason.toString(), formatter.format(now)).then((value) {
+                //   if (value) {
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //       const SnackBar(
+                //         content: Text('Applied'),
+                //       ),
+                //     );
+                //   } else {
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //       const SnackBar(
+                //         content: Text('Failed'),
+                //       ),
+                //     );
+                //   }
+                // });
               },
             ),
           ],

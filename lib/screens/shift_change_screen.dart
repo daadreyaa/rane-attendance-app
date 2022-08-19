@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rane_mobile_app/components/constants.dart';
 import 'package:rane_mobile_app/components/rounded_button.dart';
+import 'package:rane_mobile_app/utils/apiCalls.dart';
+import 'package:rane_mobile_app/utils/data.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class ShiftChangePage extends StatefulWidget {
@@ -314,7 +316,10 @@ class _ShiftChangePageState extends State<ShiftChangePage> {
               child: RoundedButton(
                 title: 'Apply',
                 color: kRoyaleBlue,
-                onPressed: () {},
+                onPressed: () {
+                  ApiCalls.shiftChange(Data.getEmpId(), startDate.toString(), endDate.toString(), currentShiftValue.toString(),startDate.toString(),Data.getEmpId());
+                // print("start date :" +startDate.toString());
+                },
               ),
             ),
           ],

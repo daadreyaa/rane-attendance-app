@@ -38,134 +38,136 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: kAppbarTextColor,
         foregroundColor: Colors.black,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              onTap: () => Navigator.pushNamed(context, ProfilePage.id),
-              child: Container(
-                alignment: Alignment.center,
-                height: 180,
-                width: 180,
-                child: const Hero(
-                  tag: 'profile-photo',
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://www.iwmbuzz.com/wp-content/uploads/2021/07/5-times-alexandra-daddario-left-netizens-lovestruck-in-cute-smiles-grey-eyes-3.jpg',
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 15,
+              ),
+              InkWell(
+                onTap: () => Navigator.pushNamed(context, ProfilePage.id),
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 180,
+                  width: 180,
+                  child: const Hero(
+                    tag: 'profile-photo',
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        'https://www.iwmbuzz.com/wp-content/uploads/2021/07/5-times-alexandra-daddario-left-netizens-lovestruck-in-cute-smiles-grey-eyes-3.jpg',
+                      ),
+                      radius: 80,
                     ),
-                    radius: 80,
                   ),
-                ),
-                decoration: const BoxDecoration(
-                  color: Color(0xffefeeee),
-                  shape: BoxShape.circle,
-                  // borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color(0xffefeeee),
-                      Color(0xffefeeee),
+                  decoration: const BoxDecoration(
+                    color: Color(0xffefeeee),
+                    shape: BoxShape.circle,
+                    // borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xffefeeee),
+                        Color(0xffefeeee),
+                      ],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xffffffff),
+                        offset: Offset(-20.0, -20.0),
+                        blurRadius: 30,
+                        spreadRadius: 0.0,
+                      ),
+                      BoxShadow(
+                        color: Color(0xffd1d0d0),
+                        offset: Offset(20.0, 20.0),
+                        blurRadius: 30,
+                        spreadRadius: 0.0,
+                      ),
                     ],
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xffffffff),
-                      offset: Offset(-20.0, -20.0),
-                      blurRadius: 30,
-                      spreadRadius: 0.0,
-                    ),
-                    BoxShadow(
-                      color: Color(0xffd1d0d0),
-                      offset: Offset(20.0, 20.0),
-                      blurRadius: 30,
-                      spreadRadius: 0.0,
-                    ),
-                  ],
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Divider(
-              thickness: 1.5,
-              indent: 30,
-              endIndent: 30,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SelectOptionContainer(
-                  title: 'Dashboard',
-                  imageLocation: 'images/dashboard.png',
-                  onTap: () => Navigator.pushNamed(context, DashBoardPage.id),
-                ),
-                SelectOptionContainer(
-                  title: 'Calendar',
-                  imageLocation: 'images/calendar.png',
-                  onTap: () => Navigator.pushNamed(context, Calendar.id),
-                ),
-                SelectOptionContainer(
-                  title: 'Attendance',
-                  imageLocation: 'images/attendance.png',
-                  onTap: () => Navigator.pushNamed(context, AttendanceScreen.id),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SelectOptionContainer(
-                  title: 'Leave',
-                  imageLocation: 'images/leave.png',
-                  onTap: () => Navigator.pushNamed(context, LeavePage.id),
-                ),
-                SelectOptionContainer(
-                  title: 'On Duty',
-                  imageLocation: 'images/od.png',
-                  onTap: () => Navigator.pushNamed(context, OnDuty.id),
-                ),
-                SelectOptionContainer(
-                  title: 'Shift Change',
-                  imageLocation: 'images/change_shift.png',
-                  onTap: () => Navigator.pushNamed(context, ShiftChangePage.id),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SelectOptionContainer(
-                  title: 'Overtime',
-                  imageLocation: 'images/overtime.png',
-                  onTap: () => Navigator.pushNamed(context, OvertimeScreen.id),
-                ),
-                SelectOptionContainer(
-                  title: 'Comp-Off',
-                  imageLocation: 'images/comp_off.png',
-                  onTap: () => Navigator.pushNamed(context, CompPage.id),
-                ),
-                SelectOptionContainer(
-                  title: 'Forgot Punch',
-                  imageLocation: 'images/forgot_punch.png',
-                  onTap: () => Navigator.pushNamed(context, ForgotPunch.id),
-                ),
-              ],
-            ),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              const Divider(
+                thickness: 1.5,
+                indent: 30,
+                endIndent: 30,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SelectOptionContainer(
+                    title: 'Dashboard',
+                    imageLocation: 'images/dashboard.png',
+                    onTap: () => Navigator.pushNamed(context, DashBoardPage.id),
+                  ),
+                  SelectOptionContainer(
+                    title: 'Calendar',
+                    imageLocation: 'images/calendar.png',
+                    onTap: () => Navigator.pushNamed(context, Calendar.id),
+                  ),
+                  SelectOptionContainer(
+                    title: 'Attendance',
+                    imageLocation: 'images/attendance.png',
+                    onTap: () => Navigator.pushNamed(context, AttendanceScreen.id),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SelectOptionContainer(
+                    title: 'Leave',
+                    imageLocation: 'images/leave.png',
+                    onTap: () => Navigator.pushNamed(context, LeavePage.id),
+                  ),
+                  SelectOptionContainer(
+                    title: 'On Duty',
+                    imageLocation: 'images/od.png',
+                    onTap: () => Navigator.pushNamed(context, OnDuty.id),
+                  ),
+                  SelectOptionContainer(
+                    title: 'Shift Change',
+                    imageLocation: 'images/change_shift.png',
+                    onTap: () => Navigator.pushNamed(context, ShiftChangePage.id),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SelectOptionContainer(
+                    title: 'Overtime',
+                    imageLocation: 'images/overtime.png',
+                    onTap: () => Navigator.pushNamed(context, OvertimeScreen.id),
+                  ),
+                  SelectOptionContainer(
+                    title: 'Comp-Off',
+                    imageLocation: 'images/comp_off.png',
+                    onTap: () => Navigator.pushNamed(context, CompPage.id),
+                  ),
+                  SelectOptionContainer(
+                    title: 'Forgot Punch',
+                    imageLocation: 'images/forgot_punch.png',
+                    onTap: () => Navigator.pushNamed(context, ForgotPunch.id),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
